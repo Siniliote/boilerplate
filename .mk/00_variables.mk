@@ -4,7 +4,7 @@ USER_ID = $(shell id -u)
 GROUP_ID = $(shell id -g)
 
 PROJECT_BUILD = build
-PROJECT_SRC = src
+PROJECT_SRC = api
 PHPUNIT_COVERAGE = $(PROJECT_BUILD)/phpunit/coverage
 
 URL_WEBSITE = http://localhost
@@ -35,5 +35,7 @@ YARN = $(EXEC_APP) yarn
 SYMFONY = $(PHP) bin/console
 
 CODESNIFFER = $(PHP) ./vendor/bin/php-cs-fixer
+PHPMETRICS = docker run --rm --user $(USER_ID):$(GROUP_ID) --volume `pwd`:/project herloct/phpmetrics phpmetrics
+
 
 SUPPORTED_COMMANDS =
