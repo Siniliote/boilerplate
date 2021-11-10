@@ -2,11 +2,13 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
+      <path value="$PROJECT_DIR$/api/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/zircote/swagger-php" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/cache-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/doctrine-bridge" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-mbstring" />
@@ -23,6 +25,7 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/friendsofphp/proxy-manager-lts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/api/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/api/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/var-dumper" />
@@ -60,17 +63,16 @@
       <path value="$PROJECT_DIR$/api/vendor/composer" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-migrations-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/validator" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/persistence" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/maker-bundle" />
-      <path value="$PROJECT_DIR$/api/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">

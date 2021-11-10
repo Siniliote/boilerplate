@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c64d78d-db65-4c27-b442-7480a879ca40" name="Changes" comment="">
+    <list default="true" id="fb7a0cfc-e7a3-4981-9982-63ab3cda0632" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/packages/test/validator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/config/packages/validator.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boilerplate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boilerplate.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Boundary/Input/BookRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Boundary/Input/BookRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,21 +26,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
+      <path value="$PROJECT_DIR$/api/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/zircote/swagger-php" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/cache-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/doctrine-bridge" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-mbstring" />
@@ -48,6 +51,7 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/friendsofphp/proxy-manager-lts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/api/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/api/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/var-dumper" />
@@ -85,75 +89,44 @@
       <path value="$PROJECT_DIR$/api/vendor/composer" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-migrations-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/validator" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/persistence" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/maker-bundle" />
-      <path value="$PROJECT_DIR$/api/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
     </include_path>
   </component>
-  <component name="ProjectId" id="20gU8q3Mz22gHEq7o8UUVNFxcpB" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="20isQ5W3cw1OPongf56oX2gOTXK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/Boundary/Output/Request" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/src/Boundary/Output/Request" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/src/Boundary" />
-      <recent name="$PROJECT_DIR$/api/src/Presenter" />
-      <recent name="$PROJECT_DIR$/api/src/Boundary/Output/Response" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2c64d78d-db65-4c27-b442-7480a879ca40" name="Changes" comment="" />
-      <created>1636465567679</created>
+      <changelist id="fb7a0cfc-e7a3-4981-9982-63ab3cda0632" name="Changes" comment="" />
+      <created>1636538724260</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1636465567679</updated>
-      <workItem from="1636465568835" duration="9593000" />
+      <updated>1636538724260</updated>
+      <workItem from="1636538726730" duration="42000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

@@ -2,8 +2,17 @@
 
 namespace App\Boundary\Input;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class BookRequest
 {
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your first name must be at least {{ limit }} characters long',
+        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
+    )]
     private string $message;
     private string $path;
     private array $pages;
