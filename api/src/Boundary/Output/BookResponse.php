@@ -16,6 +16,7 @@ class BookResponse
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
         return $this;
     }
 
@@ -27,6 +28,7 @@ class BookResponse
     public function setPath(string $path): self
     {
         $this->path = $path;
+
         return $this;
     }
 
@@ -38,6 +40,7 @@ class BookResponse
     public function addPage(PageResponse $page): self
     {
         $this->pages[] = $page;
+
         return $this;
     }
 }

@@ -34,9 +34,6 @@ YARN = $(EXEC_APP) yarn
 
 SYMFONY = $(PHP) bin/console
 
-CODESNIFFER = $(PHP) ./vendor/bin/phpcs
-CODESNIFFER_FIX = $(PHP) ./vendor/bin/phpcbf
-MESSDETECTOR = $(PHP) ./vendor/bin/phpmd
-PHPMETRICS = docker run --rm -v `pwd`:/project mykiwi/phaudit:7.2 phpmetrics
+CODESNIFFER = $(PHP) ./vendor/bin/php-cs-fixer
 
-SUPPORTED_COMMANDS = 
+SUPPORTED_COMMANDS =

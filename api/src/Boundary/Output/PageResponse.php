@@ -15,6 +15,7 @@ class PageResponse
     public function setNumber(int $number): self
     {
         $this->number = $number;
+
         return $this;
     }
 
@@ -26,8 +27,7 @@ class PageResponse
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
-
-
 }

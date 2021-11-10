@@ -25,6 +25,7 @@ class BookRequest
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
         return $this;
     }
 
@@ -36,6 +37,7 @@ class BookRequest
     public function setPath(string $path): self
     {
         $this->path = $path;
+
         return $this;
     }
 
@@ -47,13 +49,14 @@ class BookRequest
     public function addPage(PageRequest $page): self
     {
         $this->pages[] = $page;
+
         return $this;
     }
 
     public function setPages(array $pages): self
     {
         $this->pages = $pages;
+
         return $this;
     }
-
 }

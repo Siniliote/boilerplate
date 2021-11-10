@@ -5,12 +5,12 @@ namespace App\Controller;
 use App\Boundary\Input\BookRequest;
 use App\Boundary\Output\BookResponse;
 use App\Boundary\Output\PageResponse;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Nelmio\ApiDocBundle\Annotation\Model;
-use OpenApi\Annotations as OA;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class PostBookController extends AbstractController

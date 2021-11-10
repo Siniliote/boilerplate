@@ -77,6 +77,9 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/event-manager" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/collections" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/friendsofphp/php-cs-fixer" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/php-cs-fixer/diff" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

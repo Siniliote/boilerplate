@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb7a0cfc-e7a3-4981-9982-63ab3cda0632" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/packages/test/validator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/packages/validator.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mk/10_quality-assurance.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/boilerplate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boilerplate.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mk/00_variables.mk" beforeDir="false" afterPath="$PROJECT_DIR$/.mk/00_variables.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/Boundary/Input/BookRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Boundary/Input/BookRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Boundary/Input/PageRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Boundary/Input/PageRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Boundary/Output/BookResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Boundary/Output/BookResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Boundary/Output/PageResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Boundary/Output/PageResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Controller/GetBookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Controller/GetBookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Controller/PostBookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Controller/PostBookController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +30,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -99,6 +107,9 @@
       <path value="$PROJECT_DIR$/api/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/api/vendor/friendsofphp/php-cs-fixer" />
+      <path value="$PROJECT_DIR$/api/vendor/php-cs-fixer/diff" />
     </include_path>
   </component>
   <component name="ProjectId" id="20isQ5W3cw1OPongf56oX2gOTXK" />
@@ -122,7 +133,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1636538724260</updated>
-      <workItem from="1636538726730" duration="42000" />
+      <workItem from="1636538726730" duration="2677000" />
     </task>
     <servers />
   </component>
