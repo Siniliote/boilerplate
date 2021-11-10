@@ -15,6 +15,7 @@ class BookRequest
     )]
     private string $message;
     private string $path;
+    /** @var PageRequest[] */
     private array $pages;
 
     public function getMessage(): string
@@ -41,6 +42,7 @@ class BookRequest
         return $this;
     }
 
+    /** @return PageRequest[] */
     public function getPages(): array
     {
         return $this->pages;
@@ -53,6 +55,7 @@ class BookRequest
         return $this;
     }
 
+    /** @param PageRequest[] $pages */
     public function setPages(array $pages): self
     {
         $this->pages = $pages;
