@@ -7,13 +7,12 @@
     ],
     "report": {
         "html": "build/phpmetrics/",
-        "csv": "build/phpmetrics/report.csv",
-        "json": "build/phpmetrics/report.json",
-        "violations": "build/phpmetrics/violations.xml"
+        "json": "build/logs/phpmetrics.json",
+        "violations": "build/logs/phpmetrics-violations.xml"
     },
     "plugins": {
         "junit": {
-            "file": "build/junit.xml"
+            "file": "build/logs/junit.xml"
         }
     },
     "extensions": [ "php", "php8" ]

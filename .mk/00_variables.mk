@@ -3,6 +3,7 @@ MAKE_S = $(MAKE) -s
 USER_ID = $(shell id -u)
 GROUP_ID = $(shell id -g)
 
+PROJECT_ROOT = api
 PROJECT_BUILD = build
 PROJECT_SRC = src
 PHPUNIT_COVERAGE = $(PROJECT_BUILD)/phpunit/coverage
