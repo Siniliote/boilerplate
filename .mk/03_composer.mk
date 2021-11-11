@@ -9,8 +9,9 @@ composer.install: ## Composer: Read the composer.json/composer.lock file from th
 
 .PHONY: composer.install.prod
 composer.install.prod: ## Composer: Idem `composer.install` without dev elements.
-	@echo -e "\033[1;43mComposer: Install PROD\033[0m"
-	$(COMPOSER) install --verbose --no-progress --no-interaction --prefer-dist --optimize-autoloader --no-dev
+	@echo -e "\033[1;43mComposer: Install PROD\033[0m" 
+	# https://symfony.com/doc/current/performance.html#optimize-composer-autoloader
+	$(COMPOSER) install --verbose --no-progress --no-interaction --prefer-dist --optimize-autoloader --no-dev --classmap-authoritative
 
 .PHONY: composer.require
 composer.require: ## Composer: Require vendor in args
