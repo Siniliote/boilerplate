@@ -72,6 +72,8 @@
         "friendsofphp/php-cs-fixer": "^3.2",
         "nelmio/api-doc-bundle": "dev-master",
         "nelmio/cors-bundle": "^2.1",
+        "phpmd/phpmd": "^2.10",
+        "phpmetrics/phpmetrics": "^2.7",
         "symfony/maker-bundle": "^1.34"
     }
 }

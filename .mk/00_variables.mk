@@ -35,5 +35,8 @@ YARN = $(EXEC_APP) yarn
 SYMFONY = $(PHP) bin/console
 
 CODESNIFFER = $(PHP) ./vendor/bin/php-cs-fixer
+MESSDETECTOR = $(PHP) ./vendor/bin/phpmd
+PHPMETRICS = $(PHP) ./vendor/bin/phpmetrics
+	
 
 SUPPORTED_COMMANDS =

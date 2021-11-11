@@ -1,0 +1,20 @@
+{
+    "includes": [
+        "src"
+    ],
+    "exclude": [
+      "tests"
+    ],
+    "report": {
+        "html": "build/phpmetrics/",
+        "csv": "build/phpmetrics/report.csv",
+        "json": "build/phpmetrics/report.json",
+        "violations": "build/phpmetrics/violations.xml"
+    },
+    "plugins": {
+        "junit": {
+            "file": "build/junit.xml"
+        }
+    },
+    "extensions": [ "php", "php8" ]
+}

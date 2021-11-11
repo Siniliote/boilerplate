@@ -1,3 +1,4 @@
+/build
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -11,4 +12,8 @@
 
 ###> friendsofphp/php-cs-fixer ###
 /.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> phpmetrics/phpmetrics ### phpmetrics
+/build/phpmetrics
 ###< friendsofphp/php-cs-fixer ###

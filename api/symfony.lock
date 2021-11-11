@@ -134,6 +134,9 @@
     "nikic/php-parser": {
         "version": "v4.13.1"
     },
+    "pdepend/pdepend": {
+        "version": "2.10.1"
+    },
     "php-cs-fixer/diff": {
         "version": "v2.0.2"
     },
@@ -145,6 +148,12 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.5.1"
+    },
+    "phpmd/phpmd": {
+        "version": "2.10.2"
+    },
+    "phpmetrics/phpmetrics": {
+        "version": "v2.7.4"
     },
     "psr/cache": {
         "version": "2.0.0"
