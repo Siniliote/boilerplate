@@ -26,7 +26,6 @@ class BookRequest
 
 
 
-
     {
         return $this->message;
     }
