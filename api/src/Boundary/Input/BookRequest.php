@@ -23,9 +23,6 @@ class BookRequest
     private array $pages;
 
     public function getMessage(): string
-
-
-
     {
         return $this->message;
     }

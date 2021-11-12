@@ -22,7 +22,7 @@ php.analyze: ## Project: app php cli.
 ##
 
 .PHONY: install
-install: env.app docker.start dependencies ready ## Project: Install all (dependencies, data, assets, ...) according to the current environment (APP_ENV).
+install: env.app hook.install docker.start dependencies ready ## Project: Install all (dependencies, data, assets, ...) according to the current environment (APP_ENV).
 
 .PHONY: install.dev
 install.dev: env.local.dev ## Project: Force the installation for the "dev" environment.
