@@ -1,2 +1,8 @@
+###> IDE ###
 .idea
 .vscode
+###< IDE ###
+
+###> Config Local ###
+docker-compose.override.yml
+###< Config Local ###

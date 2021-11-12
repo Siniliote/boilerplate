@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+###> doctrine/doctrine-bundle ###
+  db:
+    ports:
+      - "5432"
+###< doctrine/doctrine-bundle ###
+
+### Comment or Uncomment tools usage
+#  adminer:
+#    image: adminer
+#    container_name: adminer
+#    restart: always
+#    ports:
+#      - "8088:8080"
+#    depends_on:
+#      - db
+#
+#  swagger-ui:
+#    image: swaggerapi/swagger-ui
+#    container_name: swagger-ui
+#    ports:
+#      - "8082:8080"
+#    depends_on:
+#      - app
+#    environment:
+#      # SWAGGER_JSON: /openapi.json
+#      API_URL: "http://localhost:8080/api/doc.json"

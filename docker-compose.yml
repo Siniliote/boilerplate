@@ -1,0 +1,57 @@
+version: "3.9"
+services:
+  app:
+    container_name: symfony_app_service
+    build:
+      context: ./infra
+      target: symfony_php
+      args:
+        SYMFONY_VERSION: ${SYMFONY_VERSION:-}
+        STABILITY: ${STABILITY:-stable}
+    volumes:
+      # Comment out the next line in production
+      - ./api:/srv/app:rw,cached
+      # If you develop on Linux, comment out the following volumes to just use bind-mounted project directory from host
+      #- /srv/app/var/
+      #- /srv/app/var/cache/
+      #- /srv/app/var/logs/
+      #- /srv/app/var/sessions/
+    environment:
+      - SYMFONY_VERSION
+
+  nginx:
+    container_name: symfony_nginx_service
+    build:
+      context: ./infra
+      target: symfony_nginx
+    depends_on:
+      - app
+    volumes:
+      # Comment out the next line in production
+      - ./infra/docker/nginx/templates:/etc/nginx/templates
+      - ./api/public:/srv/app/public:ro
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_PORT=80
+
+  ###> doctrine/doctrine-bundle ###
+  db:
+    container_name: symfony_db_service
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
+      POSTGRES_USER: ${POSTGRES_USER:-symfony}
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+  ###< doctrine/doctrine-bundle ###
+
+volumes:
+  ###> doctrine/doctrine-bundle ###
+    db-data:
+  ###< doctrine/doctrine-bundle ###
+
