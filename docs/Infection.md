@@ -1,10 +1,10 @@
-## Infection - PHP Mutation Testing Framework
+# Infection - PHP Mutation Testing Framework
 
 ---
 
 > Un Framework de test basé sur les mutations
 
-# Infection
+## Infection
 
 Le principe en quelques lignes.
 
@@ -28,7 +28,7 @@ Le principe en quelques lignes.
 Le lancement de l'infection peut être accèlérer en utilisant plus de processus ou le code coverage de phpunit
 
 | Make                        | Description                                                                              | Commande                                                               |
-| :-------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| --------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `qa.infection`              | Lancement de l'infection sur le projet en parallèle (option -j)                          | `php ./vendor/bin/infection -j4`                                       |
 | `qa.infection.withcoverage` | Lancement de l'infection en utilisant le coverage XML de phpUnit si il a été lancé avant | `php ./vendor/bin/infection -j4 --coverage=build/phpunit/coverage-xml` |
 
@@ -36,7 +36,7 @@ Le lancement de l'infection peut être accèlérer en utilisant plus de processu
 
 > infection.json.dist
 
-```
+```json
 {
     "source": {
         "directories": [
