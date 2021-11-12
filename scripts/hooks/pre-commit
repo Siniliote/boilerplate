@@ -19,7 +19,7 @@ done
 if [ "$FILES" != "" ]
 then
     echo -e "\033[1;42mRunning Code Sniffer\033[0m"
-    make qa.codesniffer.fix $FILES
+    make qa.codesniffer.fix.files $FILES
 fi
 
 exit $?

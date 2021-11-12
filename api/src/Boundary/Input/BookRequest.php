@@ -24,6 +24,8 @@ class BookRequest
 
     public function getMessage(): string
     {
+
+
         return $this->message;
     }
 
