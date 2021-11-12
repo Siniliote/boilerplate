@@ -19,10 +19,10 @@ qa.codesniffer.fix: ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors automatically
 
 .PHONY: qa.phpstan.analyze
 qa.phpstan.analyze: ## phpstan/phpstan-symfony: Analyze code | https://phpstan.org
-	$(PHPSTAN) analyze -c phpstan.neon
+	$(PHPSTAN) analyze
 
 .PHONY: qa.messdetector
 qa.messdetector: _build ## PHP Mess Detector: Scan PHP source code and look for potential problems... | http://phpmd.org
-	$(MESSDETECTOR) $(PROJECT_SRC) html phpmd.xml --report-file build/phpmd.html
+	$(MESSDETECTOR) $(PROJECT_SRC) html phpmd.xml.dist --report-file build/phpmd.html
 
 
