@@ -72,12 +72,12 @@
         "friendsofphp/php-cs-fixer": "^3.2",
         "nelmio/api-doc-bundle": "dev-master",
         "nelmio/cors-bundle": "^2.1",
-        "phpmd/phpmd": "^2.10",
+        "phpmd/phpmd": "dev-master",
         "phpmetrics/phpmetrics": "^2.7",
+        "phpstan/phpstan-symfony": "^1.0",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
-        "symfony/phpunit-bridge": "^5.3",
-        "phpstan/phpstan-symfony": "^1.0",
-        "symfony/maker-bundle": "^1.34"
+        "symfony/maker-bundle": "^1.34",
+        "symfony/phpunit-bridge": "^5.3"
     }
 }

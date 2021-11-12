@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0b93264184128d0717c776a53a310d3",
+    "content-hash": "a90baa01b8612c42a83ae78ff5e190d2",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -5752,16 +5752,16 @@
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.10.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "1bc74db7cf834662d83abebae265be11bb2eec3a"
+                "reference": "90c9c22191a2faf004ff3d5899df00e8a0a3bfbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/1bc74db7cf834662d83abebae265be11bb2eec3a",
-                "reference": "1bc74db7cf834662d83abebae265be11bb2eec3a",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/90c9c22191a2faf004ff3d5899df00e8a0a3bfbe",
+                "reference": "90c9c22191a2faf004ff3d5899df00e8a0a3bfbe",
                 "shasum": ""
             },
             "require": {
@@ -5779,6 +5779,7 @@
                 "phpunit/phpunit": "^4.8.36 || ^5.7.27",
                 "squizlabs/php_codesniffer": "^2.0"
             },
+            "default-branch": true,
             "bin": [
                 "src/bin/phpmd"
             ],
@@ -5823,7 +5824,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/phpmd",
                 "issues": "https://github.com/phpmd/phpmd/issues",
-                "source": "https://github.com/phpmd/phpmd/tree/2.10.2"
+                "source": "https://github.com/phpmd/phpmd/tree/master"
             },
             "funding": [
                 {
@@ -5831,7 +5832,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-22T09:56:23+00:00"
+            "time": "2021-10-29T16:04:34+00:00"
         },
         {
             "name": "phpmetrics/phpmetrics",
@@ -6624,7 +6625,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "nelmio/api-doc-bundle": 20
+        "nelmio/api-doc-bundle": 20,
+        "phpmd/phpmd": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
