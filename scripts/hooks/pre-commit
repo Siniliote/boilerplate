@@ -1,0 +1,6 @@
+#!/bin/bash
+
+STANDARD="PSR12"
+
+make
+

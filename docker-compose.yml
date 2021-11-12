@@ -17,6 +17,7 @@ services:
       #- /srv/app/var/logs/
       #- /srv/app/var/sessions/
     environment:
+      - PHP_CS_FIXER_IGNORE_ENV=true
       - SYMFONY_VERSION
 
   nginx:

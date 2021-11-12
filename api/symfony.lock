@@ -42,8 +42,8 @@
         },
         "files": [
             "config/packages/doctrine.yaml",
-            "config/packages/test/doctrine.yaml",
             "config/packages/prod/doctrine.yaml",
+            "config/packages/test/doctrine.yaml",
             "src/Repository/.gitignore",
             "src/Entity/.gitignore"
         ]
@@ -101,7 +101,7 @@
         "version": "v1.0.5"
     },
     "laminas/laminas-code": {
-        "version": "4.4.3"
+        "version": "4.5.x-dev"
     },
     "nelmio/api-doc-bundle": {
         "version": "4.9999999",
@@ -147,7 +147,7 @@
         "version": "1.5.1"
     },
     "phpmd/phpmd": {
-        "version": "2.10.2"
+        "version": "dev-master"
     },
     "phpmetrics/phpmetrics": {
         "version": "v2.7.4"
@@ -254,11 +254,11 @@
             "ref": "414ba00ad43fa71be42c7906a551f1831716b03c"
         },
         "files": [
-            "config/services.yaml",
-            "config/routes/framework.yaml",
-            "config/preload.php",
-            "config/packages/cache.yaml",
             "config/packages/framework.yaml",
+            "config/packages/cache.yaml",
+            "config/services.yaml",
+            "config/preload.php",
+            "config/routes/framework.yaml",
             "public/index.php",
             "src/Kernel.php",
             "src/Controller/.gitignore"
