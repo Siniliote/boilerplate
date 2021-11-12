@@ -1,5 +1,7 @@
 ## PROJECT
 
+SUPPORTED_COMMANDS += php.analyze
+
 .PHONY: start
 start: docker.start ready ## Project: Start the current project.
 
@@ -12,6 +14,10 @@ stop: docker.stop ## Project: Stop the current project.
 .PHONY: sh
 sh: ## Project: app sh access.
 	$(EXEC_APP_ROOT) sh
+
+.PHONY: php.analyze
+php.analyze: ## Project: app php cli.
+	@$(PHP) -l -d display_errors=0 $(COMMAND_ARGS)
 
 ##
 

@@ -1,6 +1,25 @@
 #!/bin/bash
 
-STANDARD="PSR12"
+PROJECT=$PWD
 
-make
+STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php`
 
+echo "Checking PHP Lint..."
+for FILE in $STAGED_FILES_CMD
+do
+    make php.analyze ${FILE#*api/}
+    if [ $? != 0 ]
+    then
+        echo "Fix the error before commit."
+        exit 1
+    fi
+    FILES="$FILES ${FILE#*api/}"
+done
+
+if [ "$FILES" != "" ]
+then
+    echo -e "\033[1;42mRunning Code Sniffer\033[0m"
+    make qa.codesniffer.fix $FILES
+fi
+
+exit $?
