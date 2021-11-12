@@ -5,7 +5,7 @@ GROUP_ID = $(shell id -g)
 
 PROJECT_ROOT = api
 PROJECT_BUILD = build
-PROJECT_SRC = src
+PROJECT_SRC = $(PROJECT_ROOT)/src
 PHPUNIT_COVERAGE = $(PROJECT_BUILD)/phpunit/coverage
 
 URL_WEBSITE = http://localhost
@@ -36,8 +36,8 @@ YARN = $(EXEC_APP) yarn
 SYMFONY = $(PHP) bin/console
 
 CODESNIFFER = $(PHP) ./vendor/bin/php-cs-fixer
+PHPSTAN = $(PHP) ./vendor/bin/phpstan
 MESSDETECTOR = $(PHP) ./vendor/bin/phpmd
 PHPMETRICS = $(PHP) ./vendor/bin/phpmetrics
-	
 
 SUPPORTED_COMMANDS =

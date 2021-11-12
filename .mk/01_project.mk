@@ -36,6 +36,7 @@ clean: ## Project: [PROMPT yN] Remove build, vendor & node_modules folders.
 	done ; \
 	if [ $$CONTINUE == "y" ]; \
 	then \
+		cd $(PROJECT_ROOT); \
 		rm -rf build vendor node_modules; \
 		echo -e "\033[1;42mbuild, vendor & node_modules removed\033[0m"; \
 	else \

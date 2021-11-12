@@ -6,6 +6,7 @@ class BookResponse
 {
     private string $message;
     private string $path;
+    /** @var PageResponse[] */
     private array $pages;
 
     public function getMessage(): string
@@ -32,6 +33,7 @@ class BookResponse
         return $this;
     }
 
+    /** @return PageResponse[] */
     public function getPages(): array
     {
         return $this->pages;
