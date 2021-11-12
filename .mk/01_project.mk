@@ -60,9 +60,8 @@ ready: symfony.about
 	@echo -e "\033[1;42mREADY!"
 	@echo -e "  Website:    \e[4m$(URL_WEBSITE)\\033[24m"
 	@echo -e "  API:        \e[4m$(URL_API)\\033[24m"
-	@echo -e "  Adminer: \e[4m$(URL_ADMINER)\\033[24m\033[0m"
 	@echo
-	@$(MAKE_S) env.app
+	@#$(MAKE_S) env.app
 
 .PHONY: cancelled
 cancelled:

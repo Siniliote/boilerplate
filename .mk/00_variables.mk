@@ -9,8 +9,8 @@ PROJECT_SRC = src
 PHPUNIT_COVERAGE = $(PROJECT_BUILD)/phpunit/coverage
 
 URL_WEBSITE = http://localhost
-URL_API = $(URL_WEBSITE)/api
-URL_SWAGGER = $(URL_WEBSITE)/swagger
+URL_API = $(URL_WEBSITE):8088/api
+URL_SWAGGER = $(URL_WEBSITE):8080/swagger
 URL_ADMINER = $(URL_WEBSITE):8088
 
 XDEBUG_INI = /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
