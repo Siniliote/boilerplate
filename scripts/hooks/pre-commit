@@ -7,7 +7,7 @@ STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \
 echo "Checking PHP Lint..."
 for FILE in $STAGED_FILES_CMD
 do
-    make php.analyze ${FILE#*api/}
+    make NO_TTY=1 php.analyze ${FILE#*api/}
     if [ $? != 0 ]
     then
         echo "Fix the error before commit."
@@ -19,7 +19,7 @@ done
 if [ "$FILES" != "" ]
 then
     echo -e "\033[1;42mRunning Code Sniffer\033[0m"
-    make qa.codesniffer.fix.files $FILES
+    make NO_TTY=1 qa.codesniffer.fix.files $FILES
 fi
 
 exit $?
