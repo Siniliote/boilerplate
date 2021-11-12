@@ -2,9 +2,19 @@
 
 namespace App\Boundary\Input;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class PageRequest
 {
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private int $number;
+
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+    )]
     private string $title;
 
     public function getNumber(): int

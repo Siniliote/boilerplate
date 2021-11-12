@@ -10,10 +10,14 @@ class BookRequest
     #[Assert\Length(
         min: 2,
         max: 50,
-        minMessage: 'Your first name must be at least {{ limit }} characters long',
-        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
     )]
     private string $message;
+
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 100,
+    )]
     private string $path;
     /** @var PageRequest[] */
     private array $pages;
