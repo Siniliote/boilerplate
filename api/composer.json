@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
+        "laminas/laminas-code": "4.5.x-dev",
         "phpdocumentor/reflection-docblock": "^5.3",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
@@ -69,7 +70,7 @@
         }
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.2",
+        "friendsofphp/php-cs-fixer": "dev-master",
         "nelmio/api-doc-bundle": "dev-master",
         "nelmio/cors-bundle": "^2.1",
         "phpmd/phpmd": "dev-master",

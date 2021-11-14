@@ -1,5 +1,6 @@
 ## QUALITY ASSURANCE - STATIC ANALYZERS
 
+SUPPORTED_COMMANDS += qa.codesniffer.fix.files
 
 .PHONY: qa.phpmetrics
 qa.phpmetrics: _build ## PHPMetrics: Provide tons of metric (complexity / volume / object oriented / maintainability). | http://www.phpmetrics.org
@@ -16,6 +17,10 @@ qa.codesniffer.diff: ## PHP_CodeSniffer: Printing a diff report
 .PHONY: qa.codesniffer.fix
 qa.codesniffer.fix: ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors automatically
 	$(CODESNIFFER) fix
+
+.PHONY: qa.codesniffer.fix.files
+qa.codesniffer.fix.files: ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors automatically by specific files
+	$(CODESNIFFER) fix --config .php-cs-fixer.dist.php $(COMMAND_ARGS)
 
 .PHONY: qa.phpstan.analyze
 qa.phpstan.analyze: ## phpstan/phpstan-symfony: Analyze code | https://phpstan.org

@@ -19,7 +19,12 @@ SERVICE_APP = app
 SERVICE_DB = db
 DOCKER_NETWORK_DEFAULT_NAME = symfony-default
 
+
 EXEC = docker-compose exec
+ifdef NO_TTY
+  EXEC = docker-compose exec -T
+endif
+
 EXEC_USER = $(EXEC) --user $(USER_ID):$(GROUP_ID)
 EXEC_ROOT = $(EXEC) --user 0
 
