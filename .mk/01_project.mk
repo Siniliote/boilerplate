@@ -61,15 +61,15 @@ coverage: phpunit.coverage phpunit.coverage.open ## Project: Generate & open all
 cc: symfony.cc ## Project: Clear all caches.
 
 .PHONY: clean
-clean: ## Project: [PROMPT yN] Remove build, vendor & node_modules folders.
+clean: ## Project: [PROMPT yN] Remove build, var, vendor & node_modules folders.
 	@while [ -z "$$CONTINUE" ]; do \
-		read -r -p "Remove build, vendor & node_modules folders? [yN] " CONTINUE; \
+		read -r -p "Remove build, var, vendor & node_modules folders? [yN] " CONTINUE; \
 	done ; \
 	if [ $$CONTINUE == "y" ]; \
 	then \
 		cd $(PROJECT_ROOT); \
-		rm -rf build vendor node_modules; \
-		echo -e "\033[1;42mbuild, vendor & node_modules removed\033[0m"; \
+		rm -rf build var vendor node_modules; \
+		echo -e "\033[1;42mbuild, var, vendor & node_modules removed\033[0m"; \
 	else \
 		$(MAKE_S) cancelled; \
 	fi; \
@@ -79,8 +79,8 @@ clean: ## Project: [PROMPT yN] Remove build, vendor & node_modules folders.
 #
 
 .PHONY: _build
-_build: # Create 'build' folder.
-	mkdir -p $(PROJECT_BUILD)
+_build: # Create 'build' folders.
+	mkdir -p $(PROJECT_ROOT)/$(PROJECT_BUILD) $(PROJECT_ROOT)/$(PROJECT_BUILD)/cache $(PROJECT_ROOT)/$(PROJECT_BUILD)/logs
 
 .PHONY: _build.clean
 _build.clean: # Remove 'build' folder.

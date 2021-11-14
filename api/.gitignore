@@ -1,4 +1,6 @@
+###> QUALITY ASSURANCE - STATIC ANALYZERS ###
 /build
+###< QUALITY ASSURANCE - STATIC ANALYZERS ###
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -10,15 +12,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-###> friendsofphp/php-cs-fixer ###
-/.php-cs-fixer.cache
-###< friendsofphp/php-cs-fixer ###
-
-###> phpmetrics/phpmetrics ### phpmetrics
-/build/phpmetrics
-###< friendsofphp/php-cs-fixer ###
-
 ###> symfony/phpunit-bridge ###
-.phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
