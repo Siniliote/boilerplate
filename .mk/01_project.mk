@@ -1,7 +1,5 @@
 ## PROJECT
 
-SUPPORTED_COMMANDS += php.analyze
-
 .PHONY: start
 start: docker.start ready ## Project: Start the current project.
 
@@ -15,14 +13,10 @@ stop: docker.stop ## Project: Stop the current project.
 sh: ## Project: app sh access.
 	$(EXEC_APP_ROOT) sh
 
-.PHONY: php.analyze
-php.analyze: ## Project: app php cli.
-	@$(PHP) -l -d display_errors=0 $(COMMAND_ARGS)
-
 ##
 
 .PHONY: install
-install: env.app hook.install docker.start dependencies ready ## Project: Install all (dependencies, data, assets, ...) according to the current environment (APP_ENV).
+install: env.app hook.install docker.start dependencies data ready ## Project: Install all (dependencies, data, assets, ...) according to the current environment (APP_ENV).
 
 .PHONY: install.dev
 install.dev: env.local.dev ## Project: Force the installation for the "dev" environment.
@@ -37,11 +31,11 @@ install.prod: env.local.prod ## Project: Force the installation for the "prod" e
 .PHONY: dependencies
 dependencies: composer.install ## Project: Install the dependencies (only if there have been changes).
 
-#.PHONY: data
-#data: db.create ## Project: Install the data (db).
+.PHONY: data
+data: db.create ## Project: Install the data (db).
 
-#.PHONY: fixtures
-#fixtures: alice.fixtures.load ## Project: Load all fixtures.
+.PHONY: fixtures
+fixtures: doctrine.fixtures.load.nointeract ## Project: Load all fixtures.
 
 ##
 
@@ -49,7 +43,6 @@ dependencies: composer.install ## Project: Install the dependencies (only if the
 check: install.dev composer.validate symfony.security.check db.validate tests ## Project: Launch of install / Composer, Security and DB validations / Tests
 
 .PHONY: tests
-#tests: fixtures phpunit ## Project: Launch all tests.
 tests: phpunit ## Project: Launch all tests.
 
 .PHONY: coverage
@@ -88,8 +81,9 @@ _build.clean: # Remove 'build' folder.
 
 .PHONY: ready
 ready: symfony.about
-	@echo -e "\033[1;42mREADY!"
-	@echo -e "  Website:    \e[4m$(URL_WEBSITE)\\033[24m"
+	@echo -e "\033[1;42m"
+	@echo -e "READY!"
+	@echo -e "  Website:    \e[4m$(URL_WEBSITE):8080\\033[24m"
 	@echo -e "  API:        \e[4m$(URL_API)\\033[24m"
 	@echo
 	@$(MAKE_S) env.app

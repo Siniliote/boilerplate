@@ -43,3 +43,7 @@ composer.validate: ## Composer: Check if your composer.json is valid. | https://
 .PHONY: composer.dumpenv.prod
 composer.dumpenv.prod: ## Composer: Dump .env files for "prod".
 	$(COMPOSER) dump-env prod
+
+.PHONY: composer.outdated
+composer.outdated: ## Composer: The outdated command shows a list of installed packages that have updates available, including their current and latest versions.
+	$(COMPOSER) outdated --verbose
