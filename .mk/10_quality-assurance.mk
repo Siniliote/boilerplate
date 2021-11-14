@@ -28,6 +28,12 @@ qa.phpstan.analyze: ## phpstan/phpstan-symfony: Analyze code | https://phpstan.o
 
 .PHONY: qa.messdetector
 qa.messdetector: _build ## PHP Mess Detector: Scan PHP source code and look for potential problems... | http://phpmd.org
-	$(MESSDETECTOR) $(PROJECT_SRC) html phpmd.xml.dist --report-file build/phpmd.html
+	$(MESSDETECTOR) $(PROJECT_SRC) html phpmd.xml.dist --report-file $(PROJECT_BUILD)/phpmd.html
 
+.PHONY: qa.infection
+qa.infection: xdebug.on ## infection/infection: PHP Muta testing | https://infection.github.io/
+	$(INFECTION) -j$(NPROCS)
 
+.PHONY: qa.infection.withcoverage
+qa.infection.withcoverage: xdebug.off ## infection/infection: PHP Muta testing | https://infection.github.io/
+	$(INFECTION) -j$(NPROCS) --coverage=$(PROJECT_BUILD)/phpunit/coverage-xml

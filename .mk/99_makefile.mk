@@ -7,6 +7,20 @@ ifneq "$(SUPPORTS_MAKE_ARGS)" ""
   $(eval $(COMMAND_ARGS):;@:)
 endif
 
+ifeq ($J,)
+
+ifeq ($(OS),Linux)
+  NPROCS := $(shell grep -c ^processor /proc/cpuinfo)
+else ifeq ($(OS),Darwin)
+#   NPROCS := $(shell system_profiler | awk '/Number of CPUs/ {print $$4}{next;}') 
+#  OR
+#   NPROCS := $(sysctl -n hw.ncpu)
+endif # $(OS)
+
+else
+  NPROCS := $J
+endif # $J
+
 .DEFAULT_GOAL := help
 .PHONY: help
 help: ## Makefile: Print self-documented Makefile.
