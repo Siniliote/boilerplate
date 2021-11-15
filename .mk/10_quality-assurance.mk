@@ -7,23 +7,23 @@ qa.phpmetrics: _build ## PHPMetrics: Provide tons of metric (complexity / volume
 	$(PHPMETRICS) --config=phpmetrics.json
 
 .PHONY: qa.codesniffer
-qa.codesniffer: ## FriendsOfPHP/PHP-CS-Fixer: The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards... | https://cs.symfony.com
+qa.codesniffer: _build ## FriendsOfPHP/PHP-CS-Fixer: The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards... | https://cs.symfony.com
 	$(CODESNIFFER) fix --dry-run
 
 .PHONY: qa.codesniffer.diff
-qa.codesniffer.diff: ## PHP_CodeSniffer: Printing a diff report
+qa.codesniffer.diff: _build ## PHP_CodeSniffer: Printing a diff report
 	$(CODESNIFFER) fix --diff --dry-run
 
 .PHONY: qa.codesniffer.fix
-qa.codesniffer.fix: ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors automatically
+qa.codesniffer.fix: _build ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors automatically
 	$(CODESNIFFER) fix
 
 .PHONY: qa.codesniffer.fix.files
-qa.codesniffer.fix.files: ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors automatically by specific files
+qa.codesniffer.fix.files: _build ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors automatically by specific files
 	$(CODESNIFFER) fix --config .php-cs-fixer.dist.php $(COMMAND_ARGS)
 
 .PHONY: qa.phpstan.analyze
-qa.phpstan.analyze: ## phpstan/phpstan-symfony: Analyze code | https://phpstan.org
+qa.phpstan.analyze: _build ## phpstan/phpstan-symfony: Analyze code | https://phpstan.org
 	$(PHPSTAN) analyze
 
 .PHONY: qa.messdetector
