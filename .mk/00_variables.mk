@@ -2,6 +2,8 @@ MAKE_S = $(MAKE) -s
 
 USER_ID = $(shell id -u)
 GROUP_ID = $(shell id -g)
+NPROCS := 1
+OS := $(shell uname)
 
 PROJECT_ROOT = api
 PROJECT_BUILD = build
@@ -44,5 +46,6 @@ CODESNIFFER = $(PHP) ./vendor/bin/php-cs-fixer
 PHPSTAN = $(PHP) ./vendor/bin/phpstan
 MESSDETECTOR = $(PHP) ./vendor/bin/phpmd
 PHPMETRICS = $(PHP) ./vendor/bin/phpmetrics
+INFECTION = $(PHP) ./vendor/bin/infection
 
 SUPPORTED_COMMANDS =
