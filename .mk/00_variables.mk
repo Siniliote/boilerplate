@@ -38,6 +38,7 @@ COMPOSER = $(EXEC_APP) composer
 PHP = $(EXEC_APP) php
 PHPUNIT = $(EXEC_APP) ./vendor/bin/simple-phpunit
 PHPUNIT_WATCH = $(EXEC_APP) ./vendor/bin/phpunit-watcher watch
+BEHAT = $(EXEC_APP) ./vendor/bin/behat
 YARN = $(EXEC_APP) yarn
 
 SYMFONY = $(PHP) bin/console
