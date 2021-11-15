@@ -22,7 +22,11 @@ RUN set -eux \
 	icu-dev \
 	libzip-dev \
 	zlib-dev \
+    postgresql-dev \
 	&& docker-php-ext-install -j$(nproc) \
+    pdo \
+    pdo_pgsql \
+    pgsql \
 	intl \
 	zip \
 	&& pecl install \
@@ -47,7 +51,7 @@ RUN set -eux; \
 	apk del .build-deps
 ###< Xdebug ###
 
-RUN ln -s $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
+RUN ln -s $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 COPY docker/app/conf.d/symfony.ini $PHP_INI_DIR/conf.d/symfony.ini
 COPY docker/app/conf.d/xdebug.ini $PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
