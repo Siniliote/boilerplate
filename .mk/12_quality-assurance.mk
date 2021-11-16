@@ -8,7 +8,11 @@ php.analyze: ## Project: app php cli.
 
 .PHONY: qa.phpmetrics
 qa.phpmetrics: _build ## PHPMetrics: Provide tons of metric (complexity / volume / object oriented / maintainability). | http://www.phpmetrics.org
-	$(PHPMETRICS) --config=phpmetrics.json
+	$(PHPMETRICS) --config=phpmetrics.json --junit=$(PROJECT_BUILD)/phpunit/coverage-xml/junit.xml
+
+.PHONY: qa.phpmetrics.open
+qa.phpmetrics.open: _build ## PHPMetrics: Open report | http://www.phpmetrics.org
+	gio open $(PROJECT_ROOT)/$(PROJECT_BUILD)/phpmetrics/index.html
 
 .PHONY: qa.codesniffer
 qa.codesniffer: _build ## FriendsOfPHP/PHP-CS-Fixer: The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards... | https://cs.symfony.com
