@@ -38,6 +38,10 @@ qa.phpstan.generate.baseline: _build ## phpstan/phpstan-symfony: generate baseli
 qa.messdetector: _build ## PHP Mess Detector: Scan PHP source code and look for potential problems... | http://phpmd.org
 	$(MESSDETECTOR) $(PROJECT_SRC) html phpmd.xml.dist --report-file $(PROJECT_BUILD)/phpmd.html
 
+.PHONY: qa.messdetector.open
+qa.messdetector.open: _build ## PHP Mess Detector: Open report file
+	gio open $(PROJECT_ROOT)/$(PROJECT_BUILD)/phpmd.html
+
 .PHONY: qa.infection
 qa.infection: xdebug.on ## infection/infection: PHP Muta testing | https://infection.github.io/
 	$(INFECTION) -j$(NPROCS)

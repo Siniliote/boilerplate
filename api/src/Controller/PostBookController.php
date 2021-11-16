@@ -26,7 +26,7 @@ class PostBookController extends AbstractController
     #[Route('/api/book', name: 'post_book', methods: ['POST'])]
     public function __invoke(Request $request): Response
     {
-        $bookRequest = $this->serializer->deserialize($request->getContent(), BookRequest::class, 'json');
+        // $bookRequest = $this->serializer->deserialize($request->getContent(), BookRequest::class, 'json');
 
         $pageResponse = (new PageResponse())->setNumber(1)->setTitle('Ma page de test');
 

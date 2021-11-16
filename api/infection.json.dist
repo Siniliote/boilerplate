@@ -2,6 +2,12 @@
     "source": {
         "directories": [
             "src"
+        ],
+        "excludes": [
+            "migrations",
+            "src/DataFixtures",
+            "src/Factory",
+            "src/Story"
         ]
     },
     "timeout": 10,

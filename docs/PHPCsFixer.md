@@ -14,7 +14,7 @@
 
 ## Usage - Makefile
 
-> .mk\10_quality-assurance.mk
+> .mk\12_quality-assurance.mk
 
 | Make                  | Description                                   | Commande                                              |
 | --------------------- | --------------------------------------------- | ----------------------------------------------------- |

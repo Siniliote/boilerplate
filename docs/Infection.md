@@ -23,7 +23,7 @@ Le principe en quelques lignes.
 
 ## Usage - Makefile
 
-> .mk\10_quality-assurance.mk
+> .mk\12_quality-assurance.mk
 
 Le lancement de l'infection peut être accèlérer en utilisant plus de processus ou le code coverage de phpunit
 

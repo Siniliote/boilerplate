@@ -8,6 +8,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
+    /**
+     * {@inheritDoc}
+     */
     public function load(ObjectManager $manager): void
     {
         PostStory::load();
