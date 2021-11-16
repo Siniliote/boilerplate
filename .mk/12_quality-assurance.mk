@@ -10,6 +10,10 @@ php.analyze: ## Project: app php cli.
 qa.phpmetrics: _build ## PHPMetrics: Provide tons of metric (complexity / volume / object oriented / maintainability). | http://www.phpmetrics.org
 	$(PHPMETRICS) --config=phpmetrics.json
 
+.PHONY: qa.phpmetrics.open
+qa.phpmetrics.open: ## PHPMetrics: Open metrics report.
+	gio open $(PROJECT_ROOT)/$(METRICS_REPORT)/index.html
+
 .PHONY: qa.codesniffer
 qa.codesniffer: _build ## FriendsOfPHP/PHP-CS-Fixer: The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards... | https://cs.symfony.com
 	$(CODESNIFFER) fix --dry-run

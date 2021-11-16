@@ -9,6 +9,7 @@ PROJECT_ROOT = api
 PROJECT_BUILD = build
 PROJECT_SRC = src
 PHPUNIT_COVERAGE = $(PROJECT_BUILD)/phpunit/coverage
+METRICS_REPORT = $(PROJECT_BUILD)/phpmetrics
 
 URL_WEBSITE = http://localhost
 URL_API = $(URL_WEBSITE):8088/api
