@@ -24,11 +24,10 @@ RUN set -eux \
 	zlib-dev \
     postgresql-dev \
 	&& docker-php-ext-install -j$(nproc) \
-    pdo \
     pdo_pgsql \
-    pgsql \
 	intl \
 	zip \
+	pdo \
 	&& pecl install \
 	apcu-${APCU_VERSION} \
 	&& docker-php-ext-enable --ini-name 20-apcu.ini apcu \

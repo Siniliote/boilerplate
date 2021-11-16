@@ -1,6 +1,10 @@
 ## QUALITY ASSURANCE - STATIC ANALYZERS
 
-SUPPORTED_COMMANDS += qa.codesniffer.fix.files
+SUPPORTED_COMMANDS += php.analyze qa.codesniffer.fix.files
+
+.PHONY: php.analyze
+php.analyze: ## Project: app php cli.
+	@$(PHP) -l -d display_errors=0 $(COMMAND_ARGS)
 
 .PHONY: qa.phpmetrics
 qa.phpmetrics: _build ## PHPMetrics: Provide tons of metric (complexity / volume / object oriented / maintainability). | http://www.phpmetrics.org
