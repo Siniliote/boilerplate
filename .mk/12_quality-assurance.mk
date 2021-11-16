@@ -30,6 +30,10 @@ qa.codesniffer.fix.files: _build ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors aut
 qa.phpstan.analyze: _build ## phpstan/phpstan-symfony: Analyze code | https://phpstan.org
 	$(PHPSTAN) analyze
 
+.PHONY: qa.phpstan.generate.baseline
+qa.phpstan.generate.baseline: _build ## phpstan/phpstan-symfony: generate baseline | https://phpstan.org
+	$(PHPSTAN) analyze --generate-baseline
+
 .PHONY: qa.messdetector
 qa.messdetector: _build ## PHP Mess Detector: Scan PHP source code and look for potential problems... | http://phpmd.org
 	$(MESSDETECTOR) $(PROJECT_SRC) html phpmd.xml.dist --report-file $(PROJECT_BUILD)/phpmd.html

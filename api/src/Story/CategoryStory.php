@@ -4,6 +4,7 @@ namespace App\Story;
 
 use App\Entity\Category;
 use App\Factory\CategoryFactory;
+use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\Story;
 
 /**
