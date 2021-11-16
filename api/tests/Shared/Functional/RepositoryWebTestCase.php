@@ -21,7 +21,7 @@ abstract class RepositoryWebTestCase extends WebTestCase
     protected ?ObjectManager $entityManager;
 
     /**
-     * @psalm-return class-string
+     * @phpstan-return class-string
      */
     abstract protected function getRepositoryClass(): string;
 

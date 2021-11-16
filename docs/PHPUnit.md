@@ -16,15 +16,15 @@
 
 > .mk\08_phpunit.mk
 
-| Make                          | Description                                                              | Commande                               |
-| ----------------------------- | ------------------------------------------------------------------------ | -------------------------------------- |
-| `phpunit`                     | Permet de lancer tous les tests unitaires et fonctionnels                | `php ./vendor/bin/phpstan analyze`     |
-| `phpunit.coverage`            | Génère le code coverage en HTML pour les tests unitaires et fonctionnels | `php ./vendor/bin/phpstan analyze`     |
-| `phpunit.coverage.open`       | Permet d'ouvrir le code coverage HTML dans votre navigateur par défaut   | `php ./vendor/bin/phpstan analyze`     |
-| `phpunit.unit`                | Permet de lancer tous les tests unitaires                                | `php ./vendor/bin/phpstan analyze`     |
-| `phpunit.unit.coverage`       | Génère le code coverage en HTML pour les tests unitaires                 | `php ./vendor/bin/phpstan analyze`     |
-| `phpunit.functional`          | Permet de lancer tous les tests fonctionnels                             | `php ./vendor/bin/phpstan analyze`     |
-| `phpunit.functional.coverage` | Génère le code coverage en HTML pour les tests fonctionnels              | `php ./vendor/bin/phpstan analyze`     |
+| Make                          | Description                                                              | Commande                                                                                            |
+| ----------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `phpunit`                     | Permet de lancer tous les tests unitaires et fonctionnels                | `php ./vendor/bin/simple-phpunit`                                                                   |
+| `phpunit.coverage`            | Génère le code coverage en HTML pour les tests unitaires et fonctionnels | `php ./vendor/bin/simple-phpunit --coverage-html=build/phpunit/coverage --coverage-xml=build/phpunit/coverage-xml --log-junit=build/phpunit/coverage-xml/junit.xml --coverage-clover=build/logs/clover.xml`     |
+| `phpunit.coverage.open`       | Permet d'ouvrir le code coverage HTML dans votre navigateur par défaut   | `gio open api/build/coverage/index.html`                                                            |
+| `phpunit.unit`                | Permet de lancer tous les tests unitaires                                | `php ./vendor/bin/simple-phpunit --testsuite unit`                                                  |
+| `phpunit.unit.coverage`       | Génère le code coverage en HTML pour les tests unitaires                 | `php ./vendor/bin/simple-phpunit --testsuite unit --coverage-html=build/phpunit/coverage`           |
+| `phpunit.functional`          | Permet de lancer tous les tests fonctionnels                             | `php ./vendor/bin/simple-phpunit --testsuite functional`                                            |
+| `phpunit.functional.coverage` | Génère le code coverage en HTML pour les tests fonctionnels              | `php ./vendor/bin/simple-phpunit --testsuite functional --coverage-html=build/phpunit/coverage`     |
 
 ## Fichier de configuration
 

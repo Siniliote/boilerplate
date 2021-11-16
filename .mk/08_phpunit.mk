@@ -6,7 +6,7 @@ phpunit: xdebug.off ## PHPUnit: Launch all tests (unit, functional, ...).
 
 .PHONY: phpunit.coverage
 phpunit.coverage: xdebug.on _build ## PHPUnit: Generate code clover in HTML format | Clover style coverage report | Junit and xml-coverage for Infection.
-	$(PHPUNIT) --coverage-html $(PHPUNIT_COVERAGE) --coverage-xml=$(PROJECT_BUILD)/phpunit/coverage-xml --log-junit=$(PROJECT_BUILD)/phpunit/coverage-xml/junit.xml --coverage-clover $(PROJECT_BUILD)/logs/clover.xml
+	$(PHPUNIT) --coverage-html=$(PHPUNIT_COVERAGE) --coverage-xml=$(PROJECT_BUILD)/phpunit/coverage-xml --log-junit=$(PROJECT_BUILD)/phpunit/coverage-xml/junit.xml --coverage-clover=$(PROJECT_BUILD)/logs/clover.xml
 
 .PHONY: phpunit.coverage.open
 phpunit.coverage.open: ## PHPUnit: Open code coverage report.
@@ -20,7 +20,7 @@ phpunit.unit: ## PHPUnit: Launch unit tests.
 
 .PHONY: phpunit.unit.coverage
 phpunit.unit.coverage: xdebug.on _build ## PHPUnit: Generate code coverage report in HTML format for unit tests.
-	$(PHPUNIT) --testsuite unit --coverage-html $(PHPUNIT_COVERAGE)
+	$(PHPUNIT) --testsuite unit --coverage-html=$(PHPUNIT_COVERAGE)
 
 .PHONY: phpunit.functional
 phpunit.functional: xdebug.off ## PHPUnit: Launch functional tests.
@@ -28,4 +28,4 @@ phpunit.functional: xdebug.off ## PHPUnit: Launch functional tests.
 
 .PHONY: phpunit.functional.coverage
 phpunit.functional.coverage: xdebug.on _build ## PHPUnit: Generate code coverage report in HTML format for functional tests.
-	$(PHPUNIT) --testsuite functional --coverage-html $(PHPUNIT_COVERAGE)
+	$(PHPUNIT) --testsuite functional --coverage-html=$(PHPUNIT_COVERAGE)
