@@ -1,0 +1,22 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:close\\(\\)\\.$#"
+			count: 1
+			path: tests/Shared/Functional/RepositoryWebTestCase.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Shared\\\\Functional\\\\RepositoryWebTestCase\\:\\:getRepository\\(\\) return type with generic interface Doctrine\\\\Persistence\\\\ObjectRepository does not specify its types\\: TEntityClass$#"
+			count: 1
+			path: tests/Shared/Functional/RepositoryWebTestCase.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\RepositoryWebTestCase\\:\\:\\$repository \\(Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\) does not accept object\\.$#"
+			count: 1
+			path: tests/Shared/Functional/RepositoryWebTestCase.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\RepositoryWebTestCase\\:\\:\\$repository with generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository does not specify its types\\: TEntityClass$#"
+			count: 1
+			path: tests/Shared/Functional/RepositoryWebTestCase.php
+
