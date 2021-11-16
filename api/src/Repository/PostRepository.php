@@ -12,9 +12,11 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Post[]    findAll()
  * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
+ * @psalm-method list<Post> findAll()
+ * @psalm-method list<Post> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  * @template-extends AbstractRepository<Post>
  */
-class PostRepository extends AbstractRepository implements PostGateway
+final class PostRepository extends AbstractRepository implements PostGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

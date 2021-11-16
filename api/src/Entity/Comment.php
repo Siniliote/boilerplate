@@ -22,7 +22,7 @@ class Comment
     public \DateTime $createdAt;
 
     #[ORM\ManyToOne]
-    private ?Post $post;
+    private ?Post $post = null;
 
     #[ORM\Column]
     private bool $approved = false;

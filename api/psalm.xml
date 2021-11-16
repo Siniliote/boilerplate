@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="8"
+    phpVersion="8.0"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <ignoreFiles>
+            <directory name="bin"/>
+            <directory name="build"/>
+            <directory name="features"/>
+            <directory name="migrations"/>
+            <directory name="src/DataFixtures"/>
+            <directory name="src/Factory"/>
+            <directory name="src/Story"/>
+            <directory name="vendor"/>
+            <file name="src/Kernel.php" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
+            <containerXml>var/cache/dev/App_KernelDevDebugContainer.xml</containerXml>
+            <containerXml>var/cache/tests/App_KernelDevDebugContainer.xml</containerXml>
+        </pluginClass>
+        <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/>
+    </plugins>
+
+    <extraFiles>
+        <directory name="var/cache/dev/Symfony/Config"/> <!-- https://github.com/psalm/psalm-plugin-symfony/issues/201 -->
+    </extraFiles>
+
+    <issueHandlers>
+        <MissingFile> <!-- https://github.com/psalm/psalm-plugin-symfony/issues/205 -->
+            <errorLevel type="suppress">
+                <file name="config/preload.php"/>
+            </errorLevel>
+        </MissingFile>
+
+        <UndefinedAttributeClass>
+            <errorLevel type="suppress">
+                <!-- This class is new in PHP 8.1 and Psalm does not know it yet. -->
+                <referencedClass name="ReturnTypeWillChange"/>
+            </errorLevel>
+        </UndefinedAttributeClass>
+    </issueHandlers>
+</psalm>

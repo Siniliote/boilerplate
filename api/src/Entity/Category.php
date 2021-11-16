@@ -14,7 +14,7 @@ class Category
     public ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private string $name;
+    private string $name = '';
 
     /**
      * @var Collection<int, Post>

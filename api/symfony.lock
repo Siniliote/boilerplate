@@ -1,4 +1,10 @@
 {
+    "amphp/amp": {
+        "version": "v2.6.1"
+    },
+    "amphp/byte-stream": {
+        "version": "v1.8.1"
+    },
     "behat/behat": {
         "version": "v3.10.0"
     },
@@ -25,6 +31,9 @@
         "files": [
             "config/packages/test/dama_doctrine_test_bundle.yaml"
         ]
+    },
+    "dnoegel/php-xdg-base-dir": {
+        "version": "v0.1.1"
     },
     "doctrine/annotations": {
         "version": "1.13",
@@ -124,6 +133,12 @@
     "fakerphp/faker": {
         "version": "v1.16.0"
     },
+    "felixfbecker/advanced-json-rpc": {
+        "version": "v3.2.1"
+    },
+    "felixfbecker/language-server-protocol": {
+        "version": "1.5.1"
+    },
     "friends-of-behat/symfony-extension": {
         "version": "2.2",
         "recipe": {
@@ -182,11 +197,17 @@
             "config/packages/nelmio_cors.yaml"
         ]
     },
+    "netresearch/jsonmapper": {
+        "version": "v4.0.0"
+    },
     "nikic/php-parser": {
         "version": "v4.13.1"
     },
     "ondram/ci-detector": {
         "version": "3.5.1"
+    },
+    "openlss/lib-array2xml": {
+        "version": "1.0.0"
     },
     "pdepend/pdepend": {
         "version": "2.10.1"
@@ -220,6 +241,12 @@
     },
     "phpstan/phpstan-symfony": {
         "version": "1.0.1"
+    },
+    "psalm/plugin-phpunit": {
+        "version": "0.16.1"
+    },
+    "psalm/plugin-symfony": {
+        "version": "v3.0.4"
     },
     "psr/cache": {
         "version": "2.0.0"
@@ -468,11 +495,17 @@
     "thecodingmachine/safe": {
         "version": "v1.3.3"
     },
+    "vimeo/psalm": {
+        "version": "4.12.0"
+    },
     "webmozart/assert": {
         "version": "1.10.0"
     },
     "webmozart/path-util": {
         "version": "2.3.0"
+    },
+    "weirdan/doctrine-psalm-plugin": {
+        "version": "v2.0.1"
     },
     "zenstruck/assert": {
         "version": "v1.0.0"
