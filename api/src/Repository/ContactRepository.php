@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Contact;
 use App\Gateway\ContactGateway;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,9 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Contact[]    findAll()
  * @method Contact[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @template-extends ServiceEntityRepository<Contact>
+ * @template-extends AbstractRepository<Contact>
  */
-class ContactRepository extends ServiceEntityRepository implements ContactGateway
+class ContactRepository extends AbstractRepository implements ContactGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

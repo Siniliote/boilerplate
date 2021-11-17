@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use App\Gateway\CategoryGateway;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,9 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Category[]    findAll()
  * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @template-extends ServiceEntityRepository<Category>
+ * @template-extends AbstractRepository<Category>
  */
-class CategoryRepository extends ServiceEntityRepository implements CategoryGateway
+class CategoryRepository extends AbstractRepository implements CategoryGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

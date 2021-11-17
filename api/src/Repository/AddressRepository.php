@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Address;
 use App\Gateway\AddressGateway;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,9 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Address[]    findAll()
  * @method Address[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @template-extends ServiceEntityRepository<Address>
+ * @template-extends AbstractRepository<Address>
  */
-class AddressRepository extends ServiceEntityRepository implements AddressGateway
+class AddressRepository extends AbstractRepository implements AddressGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

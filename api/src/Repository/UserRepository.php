@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\User;
 use App\Gateway\UserGateway;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,9 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @template-extends ServiceEntityRepository<User>
+ * @template-extends AbstractRepository<User>
  */
-class UserRepository extends ServiceEntityRepository implements UserGateway
+class UserRepository extends AbstractRepository implements UserGateway
 {
     public function __construct(ManagerRegistry $registry)
     {
