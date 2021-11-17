@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use App\Gateway\PostGateway;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,9 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Post[]    findAll()
  * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @template-extends ServiceEntityRepository<Post>
+ * @template-extends AbstractRepository<Post>
  */
-class PostRepository extends ServiceEntityRepository implements PostGateway
+class PostRepository extends AbstractRepository implements PostGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

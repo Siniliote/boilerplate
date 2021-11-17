@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Comment;
 use App\Gateway\CommentGateway;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,9 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Comment[]    findAll()
  * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @template-extends ServiceEntityRepository<Comment>
+ * @template-extends AbstractRepository<Comment>
  */
-class CommentRepository extends ServiceEntityRepository implements CommentGateway
+class CommentRepository extends AbstractRepository implements CommentGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

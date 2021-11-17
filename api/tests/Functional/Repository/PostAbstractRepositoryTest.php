@@ -6,9 +6,9 @@ namespace App\Tests\Functional\Repository;
 
 use App\Repository\PostRepository;
 use App\Story\PostStory;
-use App\Tests\Shared\Functional\RepositoryWebTestCase;
+use App\Tests\Shared\Functional\AbstractRepositoryWebTestCase;
 
-class PostRepositoryTest extends RepositoryWebTestCase
+class PostAbstractRepositoryTest extends AbstractRepositoryWebTestCase
 {
     protected function getRepositoryClass(): string
     {

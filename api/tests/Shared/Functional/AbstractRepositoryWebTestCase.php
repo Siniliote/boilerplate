@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
-abstract class RepositoryWebTestCase extends WebTestCase
+abstract class AbstractRepositoryWebTestCase extends WebTestCase
 {
     use Factories;
     use ResetDatabase;

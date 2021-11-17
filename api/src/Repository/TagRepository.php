@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Tag;
 use App\Gateway\TagGateway;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,9 +12,9 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Tag[]    findAll()
  * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @template-extends ServiceEntityRepository<Tag>
+ * @template-extends AbstractRepository<Tag>
  */
-class TagRepository extends ServiceEntityRepository implements TagGateway
+class TagRepository extends AbstractRepository implements TagGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

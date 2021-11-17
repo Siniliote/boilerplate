@@ -14,6 +14,16 @@ class User
     #[ORM\Column]
     private string $name;
 
+    /**
+     * @todo reflect at this method
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

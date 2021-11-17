@@ -51,4 +51,15 @@ interface Gateway
      * @psalm-return list<T>
      */
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);
+
+    /**
+     * Create entity with persist database.
+     *
+     * @param object $entity
+     * @phpstan-param T $entity
+     *
+     * @return void
+     * @phpstan-return void
+     */
+    public function create($entity);
 }
