@@ -2,8 +2,8 @@
 
 namespace App\Controller\User;
 
-use App\Boundary\Input\UserRequest;
-use App\Boundary\Output\UserResponse;
+use App\Boundary\Input\User\UserRequest;
+use App\Boundary\Output\User\UserResponse;
 use App\UseCase\User\PostUserUseCase;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Annotations as OA;
@@ -20,6 +20,7 @@ class PostUserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="User")
      * @OA\RequestBody(description="Post user", @Model(type=UserRequest::class))
      * @OA\Response(response="200", description="Post user", @Model(type=UserResponse::class))
      */

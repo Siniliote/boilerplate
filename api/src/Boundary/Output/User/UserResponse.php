@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Boundary\Output;
+namespace App\Boundary\Output\User;
+
+use App\Boundary\Output\AbstractResponse;
 
 class UserResponse extends AbstractResponse
 {

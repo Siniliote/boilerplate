@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Boundary\Input;
+namespace App\Boundary\Input\User;
 
+use App\Boundary\Input\RequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UserRequest implements RequestInterface

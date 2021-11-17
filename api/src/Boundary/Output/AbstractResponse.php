@@ -2,11 +2,9 @@
 
 namespace App\Boundary\Output;
 
-use Symfony\Component\HttpFoundation\Response;
-
-abstract class AbstractResponse implements ResponseInterface
+abstract class AbstractResponse implements ResponseInterface, StatusCodeInterface
 {
-    private int $status = Response::HTTP_OK;
+    private int $status = self::OK;
 
     /** @var array<int, string> */
     private array $errors = [];
