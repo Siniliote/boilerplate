@@ -210,7 +210,7 @@
         "version": "1.0.0"
     },
     "pdepend/pdepend": {
-        "version": "2.10.1"
+        "version": "2.10.2"
     },
     "php-cs-fixer/diff": {
         "version": "v2.0.2"
@@ -370,7 +370,7 @@
         "version": "v5.3.10"
     },
     "symfony/maker-bundle": {
-        "version": "1.35",
+        "version": "1.36",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",

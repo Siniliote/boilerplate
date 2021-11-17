@@ -12,7 +12,8 @@ class Comment
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
     public ?int $id = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -21,7 +22,8 @@ class Comment
     #[ORM\Column]
     public \DateTime $createdAt;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Post::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Post $post = null;
 
     #[ORM\Column]
