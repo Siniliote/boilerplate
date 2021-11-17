@@ -55,11 +55,9 @@ interface Gateway
     /**
      * Create entity with persist database.
      *
-     * @param object $entity
-     * @phpstan-param T $entity
+     * @param mixed $entity
      *
      * @return void
-     * @phpstan-return void
      */
     public function create($entity);
 }

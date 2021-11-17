@@ -1,6 +1,6 @@
 ## QUALITY ASSURANCE - STATIC ANALYZERS
 
-SUPPORTED_COMMANDS += php.analyze qa.codesniffer.fix.files
+SUPPORTED_COMMANDS += php.analyze qa.codesniffer.fix.files qa.psalm.enable-plugin qa.psalm.disable-plugin
 
 .PHONY: php.analyze
 php.analyze: ## Project: app php cli.
@@ -33,6 +33,22 @@ qa.codesniffer.fix.files: _build ## FriendsOfPHP/PHP-CS-Fixer: Fixing errors aut
 .PHONY: qa.phpstan.analyze
 qa.phpstan.analyze: _build ## phpstan/phpstan-symfony: Analyze code | https://phpstan.org
 	$(PHPSTAN) analyze
+
+.PHONY: qa.psalm
+qa.psalm: _build ## vimeo/psalm: Analyze code | https://psalm.dev
+	$(PSALM) --show-info=true
+
+.PHONY: qa.psalm.enable-plugin
+qa.psalm.enable-plugin: ## vimeo/psalm: Active un plugin | https://psalm.dev/plugins
+	$(PSALM)-plugin enable $(COMMAND_ARGS)
+
+.PHONY: qa.psalm.disable-plugin
+qa.psalm.disable-plugin: ## vimeo/psalm: Désactive un plugin | https://psalm.dev/plugins
+	$(PSALM)-plugin disable $(COMMAND_ARGS)
+
+.PHONY: qa.psalter
+qa.psalter: ## vimeo/psalm: Ajoute un plugin | https://psalm.dev/plugins
+	$(PSALTER) --issues=all --php-version=8.0
 
 .PHONY: qa.phpstan.generate.baseline
 qa.phpstan.generate.baseline: _build ## phpstan/phpstan-symfony: generate baseline | https://phpstan.org

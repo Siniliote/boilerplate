@@ -12,9 +12,11 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Comment[]    findAll()
  * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
+ * @psalm-method list<Comment> findAll()
+ * @psalm-method list<Comment> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  * @template-extends AbstractRepository<Comment>
  */
-class CommentRepository extends AbstractRepository implements CommentGateway
+final class CommentRepository extends AbstractRepository implements CommentGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

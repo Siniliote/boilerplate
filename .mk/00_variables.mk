@@ -45,6 +45,8 @@ SYMFONY = $(PHP) bin/console
 
 CODESNIFFER = $(PHP) ./vendor/bin/php-cs-fixer
 PHPSTAN = $(PHP) ./vendor/bin/phpstan
+PSALM = $(PHP) ./vendor/bin/psalm
+PSALTER = $(PHP) ./vendor/bin/psalter
 MESSDETECTOR = $(PHP) ./vendor/bin/phpmd
 PHPMETRICS = $(PHP) ./vendor/bin/phpmetrics
 INFECTION = $(PHP) ./vendor/bin/infection

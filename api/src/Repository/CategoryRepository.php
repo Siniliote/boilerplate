@@ -12,9 +12,11 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Category[]    findAll()
  * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
+ * @psalm-method list<Category> findAll()
+ * @psalm-method list<Category> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  * @template-extends AbstractRepository<Category>
  */
-class CategoryRepository extends AbstractRepository implements CategoryGateway
+final class CategoryRepository extends AbstractRepository implements CategoryGateway
 {
     public function __construct(ManagerRegistry $registry)
     {

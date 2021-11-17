@@ -8,7 +8,7 @@ class IdRequest implements RequestInterface
 
     public function __construct(int $id)
     {
-        $this->setId($id);
+        $this->id = $id;
     }
 
     public function getId(): int

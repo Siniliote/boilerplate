@@ -12,7 +12,7 @@ class User
     public ?int $id = null;
 
     #[ORM\Column]
-    private string $name;
+    private string $name = '';
 
     /**
      * @todo reflect at this method

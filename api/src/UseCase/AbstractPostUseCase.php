@@ -5,6 +5,7 @@ namespace App\UseCase;
 use App\Boundary\Input\RequestInterface;
 use App\Boundary\Output\ResponseInterface;
 use App\Boundary\Output\StatusCodeInterface;
+use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AbstractPostUseCase
@@ -18,8 +19,9 @@ class AbstractPostUseCase
         $errors = $this->validator->validate($request);
         if ($errors->count() > 0) {
             $response->setStatus(StatusCodeInterface::BAD_REQUEST);
+            /** @var ConstraintViolationInterface $error */
             foreach ($errors as $error) {
-                $response->addError($error->getMessage());
+                $response->addError((string) $error->getMessage());
             }
         }
 

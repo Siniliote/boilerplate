@@ -12,9 +12,11 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Address[]    findAll()
  * @method Address[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
+ * @psalm-method list<Address> findAll()
+ * @psalm-method list<Address> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  * @template-extends AbstractRepository<Address>
  */
-class AddressRepository extends AbstractRepository implements AddressGateway
+final class AddressRepository extends AbstractRepository implements AddressGateway
 {
     public function __construct(ManagerRegistry $registry)
     {
