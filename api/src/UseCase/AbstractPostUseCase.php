@@ -4,7 +4,7 @@ namespace App\UseCase;
 
 use App\Boundary\Input\RequestInterface;
 use App\Boundary\Output\ResponseInterface;
-use Symfony\Component\HttpFoundation\Response;
+use App\Boundary\Output\StatusCodeInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AbstractPostUseCase
@@ -17,7 +17,7 @@ class AbstractPostUseCase
     {
         $errors = $this->validator->validate($request);
         if ($errors->count() > 0) {
-            $response->setStatus(Response::HTTP_BAD_REQUEST);
+            $response->setStatus(StatusCodeInterface::BAD_REQUEST);
             foreach ($errors as $error) {
                 $response->addError($error->getMessage());
             }

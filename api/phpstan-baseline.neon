@@ -1,22 +1,32 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method App\\\\Repository\\\\AbstractRepository\\:\\:create\\(\\) has parameter \\$entity with no type specified\\.$#"
+			count: 1
+			path: src/Repository/AbstractRepository.php
+
+		-
+			message: "#^Type mixed in generic type Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\<mixed\\> in PHPDoc tag @extends is not subtype of template type TEntityClass of object of class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\.$#"
+			count: 1
+			path: src/Repository/AbstractRepository.php
+
+		-
 			message: "#^Call to an undefined method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:close\\(\\)\\.$#"
 			count: 1
-			path: tests/Shared/Functional/RepositoryWebTestCase.php
+			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
 
 		-
-			message: "#^Method App\\\\Tests\\\\Shared\\\\Functional\\\\RepositoryWebTestCase\\:\\:getRepository\\(\\) return type with generic interface Doctrine\\\\Persistence\\\\ObjectRepository does not specify its types\\: TEntityClass$#"
+			message: "#^Method App\\\\Tests\\\\Shared\\\\Functional\\\\AbstractRepositoryWebTestCase\\:\\:getRepository\\(\\) return type with generic interface Doctrine\\\\Persistence\\\\ObjectRepository does not specify its types\\: TEntityClass$#"
 			count: 1
-			path: tests/Shared/Functional/RepositoryWebTestCase.php
+			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\RepositoryWebTestCase\\:\\:\\$repository \\(Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\) does not accept object\\.$#"
+			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\AbstractRepositoryWebTestCase\\:\\:\\$repository \\(Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\) does not accept object\\.$#"
 			count: 1
-			path: tests/Shared/Functional/RepositoryWebTestCase.php
+			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\RepositoryWebTestCase\\:\\:\\$repository with generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository does not specify its types\\: TEntityClass$#"
+			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\AbstractRepositoryWebTestCase\\:\\:\\$repository with generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository does not specify its types\\: TEntityClass$#"
 			count: 1
-			path: tests/Shared/Functional/RepositoryWebTestCase.php
+			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
 

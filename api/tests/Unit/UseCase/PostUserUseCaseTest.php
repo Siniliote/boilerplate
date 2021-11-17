@@ -2,12 +2,12 @@
 
 namespace App\Tests\Unit\UseCase;
 
-use App\Boundary\Input\UserRequest;
-use App\Boundary\Output\UserResponse;
+use App\Boundary\Input\User\UserRequest;
+use App\Boundary\Output\User\UserResponse;
+use App\Hydrator\Response\UserHydrator;
 use App\Tests\Mock\Repository\InMemory\UserRepository;
 use App\UseCase\User\PostUserUseCase;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class PostUserUseCaseTest extends KernelTestCase
@@ -36,7 +36,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $this->buildUseCase()->execute($request, $response);
 
         // Assert
-        $this->assertSame(Response::HTTP_OK, $response->getStatus());
+        $this->assertSame($response::OK, $response->getStatus());
         $this->assertCount(0, $response->getErrors());
         $this->assertSame($name, $response->getName());
         $this->assertSame(1, $response->getId());
@@ -52,7 +52,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $this->buildUseCase()->execute($request, $response);
 
         // Assert
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatus());
+        $this->assertSame($response::BAD_REQUEST, $response->getStatus());
         $this->assertCount(2, $response->getErrors());
         $this->assertSame(self::ERROR_EMPTY, $response->getErrors()[0]);
         $this->assertSame(self::ERROR_TOO_SHORT, $response->getErrors()[1]);
@@ -68,7 +68,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $this->buildUseCase()->execute($request, $response);
 
         // Assert
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatus());
+        $this->assertSame($response::BAD_REQUEST, $response->getStatus());
         $this->assertCount(1, $response->getErrors());
         $this->assertSame(self::ERROR_TOO_SHORT, $response->getErrors()[0]);
     }
@@ -83,13 +83,13 @@ class PostUserUseCaseTest extends KernelTestCase
         $this->buildUseCase()->execute($request, $response);
 
         // Assert
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatus());
+        $this->assertSame($response::BAD_REQUEST, $response->getStatus());
         $this->assertCount(1, $response->getErrors());
         $this->assertSame(self::ERROR_TOO_LONG, $response->getErrors()[0]);
     }
 
     private function buildUseCase(): PostUserUseCase
     {
-        return new PostUserUseCase($this->validator, new UserRepository());
+        return new PostUserUseCase($this->validator, new UserRepository(), new UserHydrator());
     }
 }
