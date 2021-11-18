@@ -2,18 +2,25 @@
 
 namespace App\UseCase\User;
 
+use App\Adapter\Response\UserModelAdapter;
 use App\Boundary\Input\IdRequest;
+use App\Boundary\Input\RequestInterface;
+use App\Boundary\Output\ResponseInterface;
 use App\Boundary\Output\User\UserResponse;
 use App\Gateway\UserGateway;
-use App\Hydrator\Response\UserHydrator;
+use App\UseCase\UseCaseInterface;
 
-class FindUserUseCase
+class FindUserUseCase implements UseCaseInterface
 {
-    public function __construct(protected UserGateway $gateway, protected UserHydrator $hydrator)
+    public function __construct(protected UserGateway $gateway, protected UserModelAdapter $adapter)
     {
     }
 
-    public function execute(IdRequest $request, UserResponse $response): void
+    /**
+     * @param IdRequest    $request
+     * @param UserResponse $response
+     */
+    public function execute(RequestInterface $request, ResponseInterface $response): void
     {
         $user = $this->gateway->find($request->getId());
         if (!$user) {
@@ -24,6 +31,6 @@ class FindUserUseCase
             return;
         }
 
-        $this->hydrator->hydrate($response, $user);
+        $response->setData($this->adapter->adapte($user));
     }
 }

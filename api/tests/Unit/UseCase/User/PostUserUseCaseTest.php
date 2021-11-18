@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests\Unit\UseCase;
+namespace App\Tests\Unit\UseCase\User;
 
+use App\Adapter\Response\UserModelAdapter;
 use App\Boundary\Input\User\UserRequest;
 use App\Boundary\Output\User\UserResponse;
-use App\Hydrator\Response\UserHydrator;
 use App\Tests\Mock\Repository\InMemory\UserRepository;
 use App\UseCase\User\PostUserUseCase;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -33,13 +33,13 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->buildUseCase()->execute($request, $response);
+        $this->act($request, $response);
 
         // Assert
         $this->assertSame($response::OK, $response->getStatus());
         $this->assertCount(0, $response->getErrors());
-        $this->assertSame($name, $response->getName());
-        $this->assertSame(1, $response->getId());
+        $this->assertSame(1, $response->getData()?->getId());
+        $this->assertSame($name, $response->getData()?->getName());
     }
 
     public function testWithNameEmpty(): void
@@ -49,7 +49,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->buildUseCase()->execute($request, $response);
+        $this->act($request, $response);
 
         // Assert
         $this->assertSame($response::BAD_REQUEST, $response->getStatus());
@@ -65,7 +65,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->buildUseCase()->execute($request, $response);
+        $this->act($request, $response);
 
         // Assert
         $this->assertSame($response::BAD_REQUEST, $response->getStatus());
@@ -80,7 +80,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->buildUseCase()->execute($request, $response);
+        $this->act($request, $response);
 
         // Assert
         $this->assertSame($response::BAD_REQUEST, $response->getStatus());
@@ -90,6 +90,11 @@ class PostUserUseCaseTest extends KernelTestCase
 
     private function buildUseCase(): PostUserUseCase
     {
-        return new PostUserUseCase($this->validator, new UserRepository(), new UserHydrator());
+        return new PostUserUseCase($this->validator, new UserRepository(), new UserModelAdapter());
+    }
+
+    private function act(UserRequest $request, UserResponse $response): void
+    {
+        $this->buildUseCase()->execute($request, $response);
     }
 }

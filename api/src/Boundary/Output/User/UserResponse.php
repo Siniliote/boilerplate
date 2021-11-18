@@ -3,32 +3,20 @@
 namespace App\Boundary\Output\User;
 
 use App\Boundary\Output\AbstractResponse;
+use App\Boundary\Output\User\Model\UserModel;
 
 class UserResponse extends AbstractResponse
 {
-    private ?int $id = null;
-    private ?string $name = null;
+    private ?UserModel $data = null;
 
-    public function getId(): ?int
+    public function getData(): ?UserModel
     {
-        return $this->id;
+        return $this->data;
     }
 
-    public function setId(?int $id): self
+    public function setData(UserModel $data): self
     {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(?string $name): self
-    {
-        $this->name = $name;
+        $this->data = $data;
 
         return $this;
     }
