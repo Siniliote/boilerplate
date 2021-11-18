@@ -56,9 +56,14 @@ class Post
         $this->comments = new ArrayCollection();
     }
 
-    public function __toString(): string
+    /**
+     * @todo reflect at this method
+     */
+    public function setId(int $id): self
     {
-        return $this->title;
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -66,12 +71,12 @@ class Post
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function getBody(): ?string
+    public function getBody(): string
     {
         return $this->body;
     }
@@ -129,6 +134,11 @@ class Post
         return $this;
     }
 
+    public function getPublishedAt(): ?\DateTime
+    {
+        return $this->publishedAt;
+    }
+
     /**
      * @return Collection<int, Tag>
      */
@@ -184,5 +194,10 @@ class Post
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }

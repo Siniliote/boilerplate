@@ -2,7 +2,7 @@
 
 namespace App\Boundary\Output;
 
-abstract class AbstractResponse implements ResponseInterface, StatusCodeInterface
+abstract class AbstractResponse implements ResponseInterface, StatusCodeInterface, FormatInterface
 {
     private int $status = self::OK;
 

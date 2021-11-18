@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use App\Boundary\Input\IdRequest;
+use App\Boundary\Output\FormatInterface;
 use App\Boundary\Output\User\UserResponse;
 use App\UseCase\User\FindUserUseCase;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -21,7 +22,7 @@ class FindUserController extends AbstractController
      * @OA\Tag(name="User")
      * @OA\Response(response="200", description="Find user", @Model(type=UserResponse::class))
      */
-    #[Route('/api/user/{id<\d+>}', name: 'get_user', methods: ['GET'], format: 'json')]
+    #[Route('/api/user/{id<\d+>}', name: 'get_user', methods: ['GET'], format: FormatInterface::JSON)]
     public function __invoke(int $id): Response
     {
         $request = new IdRequest($id);

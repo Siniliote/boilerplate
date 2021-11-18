@@ -34,7 +34,8 @@ abstract class AbstractRepository extends ServiceEntityRepository
     protected $_class;
 
     /**
-     * @param mixed $entity
+     * @param object $entity
+     * @psalm-param object<T> $entity
      *
      * @throws OptimisticLockException
      * @throws MissingMappingDriverImplementation|ORMException

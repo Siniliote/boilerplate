@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use App\Boundary\Input\EmptyRequest;
+use App\Boundary\Output\FormatInterface;
 use App\Boundary\Output\User\UserListResponse;
 use App\UseCase\User\FindAllUserUseCase;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -21,7 +22,7 @@ class FindAllUserController extends AbstractController
      * @OA\Tag(name="User")
      * @OA\Response(response="200", description="Find all users", @Model(type=UserListResponse::class))
      */
-    #[Route('/api/user/', name: 'get_users', methods: ['GET'], format: 'json')]
+    #[Route('/api/user/', name: 'get_users', methods: ['GET'], format: FormatInterface::JSON)]
     public function __invoke(): Response
     {
         $request = new EmptyRequest();
