@@ -4,7 +4,6 @@ namespace App\Tests\Unit\UseCase\User;
 
 use App\Boundary\Input\User\UserRequest;
 use App\Boundary\Output\User\UserResponse;
-use App\DataTransformer\UserDataTransformer;
 use App\Tests\Mock\Repository\InMemory\UserRepository;
 use App\UseCase\User\PostUserUseCase;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -16,14 +15,14 @@ class PostUserUseCaseTest extends KernelTestCase
     private const ERROR_TOO_SHORT = 'Cette chaîne est trop courte. Elle doit avoir au minimum 2 caractères.';
     private const ERROR_TOO_LONG = 'Cette chaîne est trop longue. Elle doit avoir au maximum 50 caractères.';
 
-    private ValidatorInterface $validator;
+    private PostUserUseCase $useCase;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $container = self::getContainer();
-        $this->validator = $container->get(ValidatorInterface::class);
+        $this->useCase = new PostUserUseCase($container->get(ValidatorInterface::class), new UserRepository());
     }
 
     public function testWithValidEntity(): void
@@ -33,7 +32,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->act($request, $response);
+        $this->useCase->execute($request, $response);
 
         // Assert
         $this->assertSame($response::OK, $response->getStatus());
@@ -49,7 +48,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->act($request, $response);
+        $this->useCase->execute($request, $response);
 
         // Assert
         $this->assertSame($response::BAD_REQUEST, $response->getStatus());
@@ -65,7 +64,7 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->act($request, $response);
+        $this->useCase->execute($request, $response);
 
         // Assert
         $this->assertSame($response::BAD_REQUEST, $response->getStatus());
@@ -80,21 +79,11 @@ class PostUserUseCaseTest extends KernelTestCase
         $response = new UserResponse();
 
         // Act
-        $this->act($request, $response);
+        $this->useCase->execute($request, $response);
 
         // Assert
         $this->assertSame($response::BAD_REQUEST, $response->getStatus());
         $this->assertCount(1, $response->getErrors());
         $this->assertSame(self::ERROR_TOO_LONG, $response->getErrors()[0]);
-    }
-
-    private function buildUseCase(): PostUserUseCase
-    {
-        return new PostUserUseCase($this->validator, new UserRepository(), new UserDataTransformer());
-    }
-
-    private function act(UserRequest $request, UserResponse $response): void
-    {
-        $this->buildUseCase()->execute($request, $response);
     }
 }

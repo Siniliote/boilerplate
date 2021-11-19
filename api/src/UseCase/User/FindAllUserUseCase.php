@@ -6,14 +6,13 @@ use App\Boundary\Input\EmptyRequest;
 use App\Boundary\Input\RequestInterface;
 use App\Boundary\Output\ResponseInterface;
 use App\Boundary\Output\User\UserListResponse;
-use App\DataTransformer\UserDataTransformer;
 use App\Entity\User;
 use App\Gateway\UserGateway;
 use App\UseCase\UseCaseInterface;
 
 class FindAllUserUseCase implements UseCaseInterface
 {
-    public function __construct(protected UserGateway $gateway, protected UserDataTransformer $dataTransformer)
+    public function __construct(protected UserGateway $gateway)
     {
     }
 

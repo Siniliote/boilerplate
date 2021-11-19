@@ -6,13 +6,12 @@ use App\Boundary\Input\IdRequest;
 use App\Boundary\Input\RequestInterface;
 use App\Boundary\Output\ResponseInterface;
 use App\Boundary\Output\User\UserResponse;
-use App\DataTransformer\UserDataTransformer;
 use App\Gateway\UserGateway;
 use App\UseCase\UseCaseInterface;
 
 class FindUserUseCase implements UseCaseInterface
 {
-    public function __construct(protected UserGateway $gateway, protected UserDataTransformer $dataTransformer)
+    public function __construct(protected UserGateway $gateway)
     {
     }
 

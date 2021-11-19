@@ -4,7 +4,6 @@ namespace App\Tests\Unit\UseCase\User;
 
 use App\Boundary\Input\IdRequest;
 use App\Boundary\Output\User\UserResponse;
-use App\DataTransformer\UserDataTransformer;
 use App\Entity\User;
 use App\Tests\Mock\Repository\InMemory\UserRepository;
 use App\UseCase\User\FindUserUseCase;
@@ -52,6 +51,6 @@ class FindUserUseCaseTest extends TestCase
 
     private function buildUseCase(UserRepository $repository): FindUserUseCase
     {
-        return new FindUserUseCase($repository, new UserDataTransformer());
+        return new FindUserUseCase($repository);
     }
 }

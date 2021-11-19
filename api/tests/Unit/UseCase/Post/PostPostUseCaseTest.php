@@ -5,7 +5,6 @@ namespace App\Tests\Unit\UseCase\Post;
 use App\Boundary\Input\Category\CategoryRequest;
 use App\Boundary\Input\Post\PostRequest;
 use App\Boundary\Output\Post\PostResponse;
-use App\DataTransformer\PostDataTransformer;
 use App\Tests\Mock\Repository\InMemory\CategoryRepository;
 use App\Tests\Mock\Repository\InMemory\PostRepository;
 use App\UseCase\Category\FindCategoryUseCase;
@@ -26,8 +25,7 @@ class PostPostUseCaseTest extends KernelTestCase
         $this->useCase = new PostPostUseCase(
             $container->get(ValidatorInterface::class),
             new PostRepository(),
-            new FindCategoryUseCase(new CategoryRepository()),
-            new PostDataTransformer()
+            new FindCategoryUseCase(new CategoryRepository())
         );
     }
 

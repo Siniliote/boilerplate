@@ -7,7 +7,7 @@ use App\Boundary\Input\RequestInterface;
 use App\Boundary\Output\Category\CategoryResponse;
 use App\Boundary\Output\Post\PostResponse;
 use App\Boundary\Output\ResponseInterface;
-use App\DataTransformer\PostDataTransformer;
+use App\Entity\Category;
 use App\Entity\Post;
 use App\Gateway\PostGateway;
 use App\UseCase\AbstractPostUseCase;
@@ -20,8 +20,7 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
     public function __construct(
         ValidatorInterface $validator,
         private PostGateway $gateway,
-        private FindCategoryUseCase $categoryUseCase,
-        private PostDataTransformer $dataTransformer
+        private FindCategoryUseCase $categoryUseCase
     ) {
         parent::__construct($validator);
     }
@@ -36,7 +35,7 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
             return;
         }
 
-        $post = $this->dataTransformer->transform($request);
+        $post = $this->transform($request);
         $this->getCategory($request, $response, $post);
         $this->gateway->create($post);
         $response->setData($post);
@@ -57,5 +56,20 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
 
             $post->setCategory($responseCategory->getData());
         }
+    }
+
+    public function transform(PostRequest $request): Post
+    {
+        $post = (new Post(
+            $request->getTitle(),
+            $request->getBody(),
+            $request->getShortDescription()
+        ))->setPublishedAt($request->getPublishedAt())
+            ->setViewCount($request->getViewCount());
+        if ($category = $request->getCategory()) {
+            $post->setCategory(new Category())->setId($category->getId());
+        }
+
+        return $post;
     }
 }
