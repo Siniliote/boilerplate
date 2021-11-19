@@ -6,7 +6,7 @@ use App\Boundary\Input\RequestInterface;
 use App\Boundary\Input\User\UserRequest;
 use App\Boundary\Output\ResponseInterface;
 use App\Boundary\Output\User\UserResponse;
-use App\DataTransformer\UserDataTransformer;
+use App\Entity\User;
 use App\Gateway\UserGateway;
 use App\UseCase\AbstractPostUseCase;
 use App\UseCase\UseCaseInterface;
@@ -16,8 +16,7 @@ class PostUserUseCase extends AbstractPostUseCase implements UseCaseInterface
 {
     public function __construct(
         ValidatorInterface $validator,
-        protected UserGateway $gateway,
-        protected UserDataTransformer $dataTransformer
+        protected UserGateway $gateway
     ) {
         parent::__construct($validator);
     }
@@ -32,9 +31,15 @@ class PostUserUseCase extends AbstractPostUseCase implements UseCaseInterface
             return;
         }
 
-        $user = $this->dataTransformer->transform($request);
+        $user = $this->transform($request);
         $this->gateway->create($user);
 
         $response->setData($user);
+    }
+
+    public function transform(UserRequest $request): User
+    {
+        return (new User())
+            ->setName($request->getName());
     }
 }
