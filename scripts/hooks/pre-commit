@@ -1,25 +1,20 @@
 #!/bin/bash
 
-PROJECT=$PWD
-
-STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php`
+STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\.php | sed 's|^api/*||'`
 
 echo "Checking PHP Lint..."
-for FILE in $STAGED_FILES_CMD
-do
-    make NO_TTY=1 php.analyze ${FILE#*api/}
-    if [ $? != 0 ]
-    then
-        echo "Fix the error before commit."
-        exit 1
-    fi
-    FILES="$FILES ${FILE#*api/}"
-done
+make NO_TTY=1 php.analyze $STAGED_FILES_CMD
 
-if [ "$FILES" != "" ]
+if [ $? != 0 ]
+then
+    echo "Fix the error before commit."
+    exit 1
+fi
+
+if [ "$STAGED_FILES_CMD" != "" ]
 then
     echo -e "\033[1;42mRunning Code Sniffer\033[0m"
-    make NO_TTY=1 qa.codesniffer.fix.files $FILES
+    make NO_TTY=1 qa.codesniffer.fix.files $STAGED_FILES_CMD
 fi
 
 exit $?
