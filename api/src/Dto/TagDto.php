@@ -2,7 +2,7 @@
 
 namespace App\Dto;
 
-class TagDto
+class TagDto implements DtoInterface
 {
     private ?int $id = null;
     private ?string $name = '';

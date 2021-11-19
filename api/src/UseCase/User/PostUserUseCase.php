@@ -35,6 +35,6 @@ class PostUserUseCase extends AbstractPostUseCase implements UseCaseInterface
         $user = $this->dataTransformer->transform($request);
         $this->gateway->create($user);
 
-        $response->setData($this->dataTransformer->reverseTransform($user));
+        $response->setData($user);
     }
 }

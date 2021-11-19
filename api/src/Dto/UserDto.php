@@ -2,7 +2,7 @@
 
 namespace App\Dto;
 
-class UserDto
+class UserDto implements DtoInterface
 {
     private ?int $id = null;
     private ?string $name = null;

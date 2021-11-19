@@ -2,6 +2,8 @@
 
 namespace App\Boundary\Output;
 
+use App\Dto\DtoInterface;
+
 /**
  * @template T
  */
@@ -33,14 +35,34 @@ abstract class AbstractListResponse extends AbstractResponse
     }
 
     /**
-     * @param T $userDto
+     * @param T $user
      *
      * @return $this
      */
-    public function addData($userDto): self
+    public function addData($user): self
     {
-        $this->data[] = $userDto;
+        $this->data[] = $user;
 
         return $this;
+    }
+
+    /**
+     * @param T $entity
+     */
+    abstract protected function getDto($entity): DtoInterface;
+
+    public function getResult(): array
+    {
+        $result = parent::getResult();
+        if (!$this->hasError()) {
+            foreach ($this->getData() as $entity) {
+                $result['data'][] =
+                    $this->getDto($entity);
+            }
+        } else {
+            $result['data'] = [];
+        }
+
+        return $result;
     }
 }

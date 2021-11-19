@@ -30,6 +30,6 @@ class FindAllUserController extends AbstractController
 
         $this->useCase->execute($request, $response);
 
-        return $this->json($response);
+        return $this->json($response->getResult());
     }
 }
