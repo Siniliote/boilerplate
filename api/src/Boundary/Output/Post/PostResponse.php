@@ -2,22 +2,12 @@
 
 namespace App\Boundary\Output\Post;
 
-use App\Boundary\Output\AbstractResponse;
-use App\Boundary\Output\Post\Model\PostModel;
+use App\Boundary\Output\AbstractObjectResponse;
+use App\Dto\PostDto;
 
-class PostResponse extends AbstractResponse
+/**
+ * @template-extends AbstractObjectResponse<PostDto>
+ */
+class PostResponse extends AbstractObjectResponse
 {
-    private ?PostModel $data = null;
-
-    public function getData(): ?PostModel
-    {
-        return $this->data;
-    }
-
-    public function setData(PostModel $data): self
-    {
-        $this->data = $data;
-
-        return $this;
-    }
 }

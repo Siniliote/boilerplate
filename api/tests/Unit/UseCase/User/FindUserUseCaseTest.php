@@ -2,18 +2,16 @@
 
 namespace App\Tests\Unit\UseCase\User;
 
-use App\Adapter\Response\UserModelAdapter;
 use App\Boundary\Input\IdRequest;
 use App\Boundary\Output\User\UserResponse;
+use App\DataTransformer\UserDataTransformer;
+use App\Entity\User;
 use App\Tests\Mock\Repository\InMemory\UserRepository;
-use App\Tests\Unit\Utils\CreateUserTrait;
 use App\UseCase\User\FindUserUseCase;
 use PHPUnit\Framework\TestCase;
 
 class FindUserUseCaseTest extends TestCase
 {
-    use CreateUserTrait;
-
     private const FIRST_NAME = 'Test';
 
     public function testFindEntityNotFound(): void
@@ -35,7 +33,9 @@ class FindUserUseCaseTest extends TestCase
     {
         // Arrange
         $repository = new UserRepository();
-        $this->createUserEntity($repository, self::FIRST_NAME);
+
+        $user = (new User())->setName(self::FIRST_NAME);
+        $repository->create($user);
 
         $request = new IdRequest($id = 1);
         $response = new UserResponse();
@@ -52,6 +52,6 @@ class FindUserUseCaseTest extends TestCase
 
     private function buildUseCase(UserRepository $repository): FindUserUseCase
     {
-        return new FindUserUseCase($repository, new UserModelAdapter());
+        return new FindUserUseCase($repository, new UserDataTransformer());
     }
 }

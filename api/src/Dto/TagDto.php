@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Boundary\Output\Post\Model;
+namespace App\Dto;
 
-class TagModel
+class TagDto
 {
     private ?int $id = null;
     private ?string $name = '';

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Boundary\Output\User\Model;
+namespace App\Dto;
 
-class UserModel
+class UserDto
 {
     private ?int $id = null;
     private ?string $name = null;

@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]
-final class Address
+class Address
 {
     #[ORM\Column]
     private ?string $value = null;
