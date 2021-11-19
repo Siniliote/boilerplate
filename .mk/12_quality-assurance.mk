@@ -2,9 +2,8 @@
 
 SUPPORTED_COMMANDS += php.analyze qa.codesniffer.fix.files qa.psalm.enable-plugin qa.psalm.disable-plugin
 
-.PHONY: php.analyze
-php.analyze: ## Project: app php cli.
-	@$(PHP) -l -d display_errors=0 $(COMMAND_ARGS)
+php.analyze: ## Project: Lint php multiples php files.
+	@$(EXEC_APP) sh -c 'echo "$(COMMAND_ARGS)"| xargs -n1 -P$(NPROCS) php -l -d display_errors=0'
 
 .PHONY: qa.phpmetrics
 qa.phpmetrics: _build ## PHPMetrics: Provide tons of metric (complexity / volume / object oriented / maintainability). | http://www.phpmetrics.org
