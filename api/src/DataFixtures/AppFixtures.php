@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Story\PostStory;
+use App\DataFixtures\Story\PostStory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 

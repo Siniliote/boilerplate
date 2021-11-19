@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Story;
+namespace App\DataFixtures\Story;
 
+use App\DataFixtures\Factory\TagFactory;
 use App\Entity\Tag;
-use App\Factory\TagFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\Story;
 
