@@ -19,8 +19,8 @@ class Post
     #[ORM\Column]
     private string $body;
 
-    #[ORM\Column(length: 255)]
-    private ?string $shortDescription = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $shortDescription;
 
     #[ORM\Column]
     private int $viewCount = 0;
@@ -28,7 +28,7 @@ class Post
     #[ORM\Column]
     private \DateTime $createdAt;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTime $publishedAt = null;
 
     #[ORM\ManyToOne]
