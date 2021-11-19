@@ -2,6 +2,7 @@
 
 SUPPORTED_COMMANDS += php.analyze qa.codesniffer.fix.files qa.psalm.enable-plugin qa.psalm.disable-plugin
 
+.PHONY: php.analyze
 php.analyze: ## Project: Lint php multiples php files.
 	@$(EXEC_APP) sh -c 'echo "$(COMMAND_ARGS)"| xargs -n1 -P$(NPROCS) php -l -d display_errors=0'
 
