@@ -26,7 +26,7 @@ class FindAllUserUseCase implements UseCaseInterface
         $users = $this->gateway->findAll();
         /** @var User $user */
         foreach ($users as $user) {
-            $response->addData($this->dataTransformer->reverseTransform($user));
+            $response->addData($user);
         }
     }
 }

@@ -32,6 +32,6 @@ class PostController extends AbstractController
         $response = new PostResponse();
         $this->useCase->execute($request, $response);
 
-        return $this->json($response);
+        return $this->json($response->getResult());
     }
 }

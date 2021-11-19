@@ -2,6 +2,7 @@
 
 namespace App\Boundary\Input\Post;
 
+use App\Boundary\Input\Category\CategoryRequest;
 use App\Boundary\Input\RequestInterface;
 
 class PostRequest implements RequestInterface
@@ -11,7 +12,7 @@ class PostRequest implements RequestInterface
     private ?string $shortDescription = null;
     private int $viewCount = 0;
     private ?\DateTime $publishedAt = null;
-    private ?int $category = null;
+    private ?CategoryRequest $category = null;
 
     /** @var int[] */
     private array $tags = [];
@@ -76,12 +77,12 @@ class PostRequest implements RequestInterface
         return $this;
     }
 
-    public function getCategory(): ?int
+    public function getCategory(): ?CategoryRequest
     {
         return $this->category;
     }
 
-    public function setCategory(?int $category): self
+    public function setCategory(?CategoryRequest $category): self
     {
         $this->category = $category;
 

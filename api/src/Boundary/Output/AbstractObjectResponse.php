@@ -2,6 +2,8 @@
 
 namespace App\Boundary\Output;
 
+use App\Dto\DtoInterface;
+
 /**
  * @template T
  */
@@ -30,5 +32,15 @@ abstract class AbstractObjectResponse extends AbstractResponse
         $this->data = $data;
 
         return $this;
+    }
+
+    abstract protected function getDto(): DtoInterface;
+
+    public function getResult(): array
+    {
+        $result = parent::getResult();
+        $result['data'] = !$this->hasError() ? $this->getDto() : [];
+
+        return $result;
     }
 }

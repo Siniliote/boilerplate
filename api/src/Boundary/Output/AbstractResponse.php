@@ -41,4 +41,20 @@ abstract class AbstractResponse implements ResponseInterface, StatusCodeInterfac
 
         return $this;
     }
+
+    public function hasError(): bool
+    {
+        return \count($this->errors) > 0;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getResult(): array
+    {
+        return [
+            'status' => $this->getStatus(),
+            'errors' => $this->getErrors(),
+        ];
+    }
 }

@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Boundary\Output\User;
+namespace App\Boundary\Output\Category;
 
 use App\Boundary\Output\AbstractObjectResponse;
+use App\Dto\CategoryDto;
 use App\Dto\DtoInterface;
-use App\Dto\UserDto;
-use App\Entity\User;
+use App\Entity\Category;
 
 /**
- * @template-extends AbstractObjectResponse<User>
+ * @template-extends AbstractObjectResponse<Category>
  */
-class UserResponse extends AbstractObjectResponse
+class CategoryResponse extends AbstractObjectResponse
 {
     /**
-     * @return UserDto
+     * @return CategoryDto
      */
     protected function getDto(): DtoInterface
     {
-        return (new UserDto())
+        return (new CategoryDto())
             ->setId($this->getData()?->getId())
             ->setName($this->getData()?->getName());
     }

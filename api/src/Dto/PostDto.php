@@ -2,14 +2,14 @@
 
 namespace App\Dto;
 
-class PostDto
+class PostDto implements DtoInterface
 {
     public ?int $id = null;
     private string $title;
     private string $body;
     private ?string $shortDescription;
     private int $viewCount = 0;
-    private ?\DateTime $createdAt;
+    private ?\DateTime $createdAt = null;
     private ?\DateTime $publishedAt = null;
     private ?CategoryDto $category = null;
     /** @var TagDto[] */

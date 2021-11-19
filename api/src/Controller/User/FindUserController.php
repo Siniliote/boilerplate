@@ -29,6 +29,6 @@ class FindUserController extends AbstractController
         $response = new UserResponse();
         $this->useCase->execute($request, $response);
 
-        return $this->json($response);
+        return $this->json($response->getResult());
     }
 }

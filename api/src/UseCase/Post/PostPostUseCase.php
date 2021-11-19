@@ -4,16 +4,14 @@ namespace App\UseCase\Post;
 
 use App\Boundary\Input\Post\PostRequest;
 use App\Boundary\Input\RequestInterface;
+use App\Boundary\Output\Category\CategoryResponse;
 use App\Boundary\Output\Post\PostResponse;
 use App\Boundary\Output\ResponseInterface;
 use App\DataTransformer\PostDataTransformer;
-use App\Entity\Category;
 use App\Entity\Post;
-use App\Entity\Tag;
-use App\Gateway\CategoryGateway;
 use App\Gateway\PostGateway;
-use App\Gateway\TagGateway;
 use App\UseCase\AbstractPostUseCase;
+use App\UseCase\Category\FindCategoryUseCase;
 use App\UseCase\UseCaseInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -21,9 +19,8 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
 {
     public function __construct(
         ValidatorInterface $validator,
-        private PostGateway $postGateway,
-        private CategoryGateway $categoryGateway,
-        private TagGateway $tagGateway,
+        private PostGateway $gateway,
+        private FindCategoryUseCase $categoryUseCase,
         private PostDataTransformer $dataTransformer
     ) {
         parent::__construct($validator);
@@ -39,64 +36,26 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
             return;
         }
 
-        try {
-            $post = $this->buildEntity($request);
-            $this->postGateway->create($post);
-            $response->setData($this->dataTransformer->reverseTransform($post));
-        } catch (CategoryNotFoundException|TagNotFoundException $exception) {
-            $response
-                ->setStatus($response::NOT_FOUND)
-                ->addError($exception->getMessage());
-        }
-    }
-
-    /**
-     * @throws CategoryNotFoundException
-     * @throws TagNotFoundException
-     */
-    private function buildEntity(PostRequest $request): Post
-    {
         $post = $this->dataTransformer->transform($request);
+        $this->getCategory($request, $response, $post);
+        $this->gateway->create($post);
+        $response->setData($post);
+    }
 
+    private function getCategory(PostRequest $request, PostResponse $response, Post $post): void
+    {
         if ($request->getCategory()) {
-            $category = $this->findCategory($request);
-            $post->setCategory($category);
-        }
-        if (\count($request->getTags()) > 0) {
-            foreach ($this->findTags($request) as $tag) {
-                $post->addTag($tag);
+            $responseCategory = new CategoryResponse();
+            $this->categoryUseCase->execute($request->getCategory(), $responseCategory);
+            if ($responseCategory->hasError()) {
+                $response
+                    ->setStatus($response::BAD_REQUEST)
+                    ->setErrors($responseCategory->getErrors());
+
+                return;
             }
+
+            $post->setCategory($responseCategory->getData());
         }
-
-        return $post;
-    }
-
-    /**
-     * @throws CategoryNotFoundException
-     */
-    private function findCategory(PostRequest $request): Category
-    {
-        $category = $this->categoryGateway->find($request->getCategory());
-        if (!$category) {
-            throw new CategoryNotFoundException('Category not found');
-        }
-
-        return $category;
-    }
-
-    /**
-     * @throws TagNotFoundException
-     *
-     * @return Tag[]
-     */
-    private function findTags(PostRequest $request): array
-    {
-        $tags = $this->tagGateway->findById($request->getTags());
-
-        if (\count($tags) !== \count($request->getTags())) {
-            throw new TagNotFoundException('One or many tag not found');
-        }
-
-        return $tags;
     }
 }

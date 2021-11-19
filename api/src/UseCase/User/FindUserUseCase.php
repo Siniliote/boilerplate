@@ -31,6 +31,6 @@ class FindUserUseCase implements UseCaseInterface
             return;
         }
 
-        $response->setData($this->dataTransformer->reverseTransform($user));
+        $response->setData($user);
     }
 }
