@@ -31,7 +31,8 @@ class Post
     #[ORM\Column(nullable: true)]
     private ?\DateTime $publishedAt = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'posts')]
+    #[ORM\JoinColumn]
     private ?Category $category = null;
 
     /**

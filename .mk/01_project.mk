@@ -32,7 +32,7 @@ install.prod: env.local.prod ## Project: Force the installation for the "prod" e
 dependencies: composer.install ## Project: Install the dependencies (only if there have been changes).
 
 .PHONY: data
-data: db.create ## Project: Install the data (db).
+data: db.drop db.create ## Project: Install the data (db).
 
 .PHONY: fixtures
 fixtures: doctrine.fixtures.load.nointeract ## Project: Load all fixtures.
