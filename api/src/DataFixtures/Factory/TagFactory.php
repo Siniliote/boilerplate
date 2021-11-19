@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\DataFixtures\Factory;
 
 use App\Entity\Tag;
 use App\Repository\TagRepository;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Story;
+namespace App\DataFixtures\Story;
 
+use App\DataFixtures\Factory\PostFactory;
 use App\Entity\Post;
-use App\Factory\PostFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\Story;
 

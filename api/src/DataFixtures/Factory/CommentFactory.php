@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\DataFixtures\Factory;
 
 use App\Entity\Comment;
 use App\Repository\CommentRepository;
