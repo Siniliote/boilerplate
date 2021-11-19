@@ -55,7 +55,8 @@ interface Gateway
     /**
      * Create entity with persist database.
      *
-     * @param mixed $entity
+     * @param object $entity
+     * @psalm-param T $entity
      *
      * @return void
      */

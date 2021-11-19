@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use App\Boundary\Input\User\UserRequest;
+use App\Boundary\Output\FormatInterface;
 use App\Boundary\Output\User\UserResponse;
 use App\UseCase\User\PostUserUseCase;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -24,10 +25,10 @@ class PostUserController extends AbstractController
      * @OA\RequestBody(description="Post user", @Model(type=UserRequest::class))
      * @OA\Response(response="200", description="Post user", @Model(type=UserResponse::class))
      */
-    #[Route('/api/user', name: 'post_user', methods: ['POST'], format: 'json')]
+    #[Route('/api/user', name: 'post_user', methods: ['POST'], format: FormatInterface::JSON)]
     public function __invoke(Request $request): Response
     {
-        $request = $this->serializer->deserialize($request->getContent(), UserRequest::class, 'json');
+        $request = $this->serializer->deserialize($request->getContent(), UserRequest::class, FormatInterface::JSON);
         $response = new UserResponse();
 
         $this->useCase->execute($request, $response);
