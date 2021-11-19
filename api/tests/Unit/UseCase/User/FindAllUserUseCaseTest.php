@@ -2,18 +2,16 @@
 
 namespace App\Tests\Unit\UseCase\User;
 
-use App\Adapter\Response\UserModelAdapter;
 use App\Boundary\Input\EmptyRequest;
 use App\Boundary\Output\User\UserListResponse;
+use App\DataTransformer\UserDataTransformer;
+use App\Entity\User;
 use App\Tests\Mock\Repository\InMemory\UserRepository;
-use App\Tests\Unit\Utils\CreateUserTrait;
 use App\UseCase\User\FindAllUserUseCase;
 use PHPUnit\Framework\TestCase;
 
 class FindAllUserUseCaseTest extends TestCase
 {
-    use CreateUserTrait;
-
     private const FIRST_NAME = 'Test';
     private const SECOND_NAME = 'Test2';
 
@@ -57,7 +55,8 @@ class FindAllUserUseCaseTest extends TestCase
         // Arrange
         $repository = new UserRepository();
         foreach ($tests as $test) {
-            $this->createUserEntity($repository, $test);
+            $user = (new User())->setName($test);
+            $repository->create($user);
         }
 
         $request = new EmptyRequest();
@@ -79,6 +78,6 @@ class FindAllUserUseCaseTest extends TestCase
 
     private function buildUseCase(UserRepository $repository): FindAllUserUseCase
     {
-        return new FindAllUserUseCase($repository, new UserModelAdapter());
+        return new FindAllUserUseCase($repository, new UserDataTransformer());
     }
 }

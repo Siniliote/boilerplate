@@ -2,9 +2,9 @@
 
 namespace App\Tests\Unit\UseCase\User;
 
-use App\Adapter\Response\UserModelAdapter;
 use App\Boundary\Input\User\UserRequest;
 use App\Boundary\Output\User\UserResponse;
+use App\DataTransformer\UserDataTransformer;
 use App\Tests\Mock\Repository\InMemory\UserRepository;
 use App\UseCase\User\PostUserUseCase;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -90,7 +90,7 @@ class PostUserUseCaseTest extends KernelTestCase
 
     private function buildUseCase(): PostUserUseCase
     {
-        return new PostUserUseCase($this->validator, new UserRepository(), new UserModelAdapter());
+        return new PostUserUseCase($this->validator, new UserRepository(), new UserDataTransformer());
     }
 
     private function act(UserRequest $request, UserResponse $response): void

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Boundary\Output\Post\Model;
+namespace App\Dto;
 
-class PostModel
+class PostDto
 {
     public ?int $id = null;
     private string $title;
@@ -11,11 +11,9 @@ class PostModel
     private int $viewCount = 0;
     private ?\DateTime $createdAt;
     private ?\DateTime $publishedAt = null;
-    private ?CategoryModel $category = null;
-    /** @var TagModel[] */
+    private ?CategoryDto $category = null;
+    /** @var TagDto[] */
     private array $tags;
-
-//    private array $comments;
 
     public function __construct(string $title, string $body, ?string $shortDescription = null)
     {
@@ -108,25 +106,25 @@ class PostModel
         return $this;
     }
 
-    public function getCategory(): ?CategoryModel
+    public function getCategory(): ?CategoryDto
     {
         return $this->category;
     }
 
-    public function setCategory(?CategoryModel $category): self
+    public function setCategory(?CategoryDto $category): self
     {
         $this->category = $category;
 
         return $this;
     }
 
-    /** @return TagModel[] */
+    /** @return TagDto[] */
     public function getTags(): array
     {
         return $this->tags;
     }
 
-    /** @param TagModel[] $tags */
+    /** @param TagDto[] $tags */
     public function setTags(array $tags): self
     {
         $this->tags = $tags;
@@ -134,7 +132,7 @@ class PostModel
         return $this;
     }
 
-    public function addTags(TagModel $tag): self
+    public function addTags(TagDto $tag): self
     {
         $this->tags[] = $tag;
 

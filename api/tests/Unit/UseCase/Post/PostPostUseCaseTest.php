@@ -2,9 +2,9 @@
 
 namespace App\Tests\Unit\UseCase\Post;
 
-use App\Adapter\Response\PostModelAdapter;
 use App\Boundary\Input\Post\PostRequest;
 use App\Boundary\Output\Post\PostResponse;
+use App\DataTransformer\PostDataTransformer;
 use App\Tests\Mock\Repository\InMemory\CategoryRepository;
 use App\Tests\Mock\Repository\InMemory\PostRepository;
 use App\Tests\Mock\Repository\InMemory\TagRepository;
@@ -76,7 +76,7 @@ class PostPostUseCaseTest extends KernelTestCase
             $postRepository,
             $categoryRepository,
             $tagRepository,
-            new PostModelAdapter()
+            new PostDataTransformer()
         );
     }
 }

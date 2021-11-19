@@ -13,7 +13,7 @@ class PostRequest implements RequestInterface
     private ?\DateTime $publishedAt = null;
     private ?int $category = null;
 
-    /** @var TagRequest[] */
+    /** @var int[] */
     private array $tags = [];
 
     public function getTitle(): string
@@ -89,7 +89,7 @@ class PostRequest implements RequestInterface
     }
 
     /**
-     * @return TagRequest[]
+     * @return int[]
      */
     public function getTags(): array
     {
@@ -97,24 +97,12 @@ class PostRequest implements RequestInterface
     }
 
     /**
-     * @param TagRequest[] $tags
+     * @param int[] $tags
      */
     public function setTags(array $tags): self
     {
         $this->tags = $tags;
 
         return $this;
-    }
-
-    /**
-     * @return int[]
-     */
-    public function getIdsTag(): array
-    {
-        foreach ($this->tags as $tag) {
-            $id[] = $tag->getId();
-        }
-
-        return $id ?? [];
     }
 }

@@ -13,14 +13,14 @@ abstract class AbstractRepository implements Gateway
     /**
      * @var array<int, T>
      */
-    protected array $inMemory = [];
+    protected array $data = [];
 
     /**
      * {@inheritDoc}
      */
     public function find($id, $lockMode = null, $lockVersion = null)
     {
-        $entities = array_filter($this->inMemory, function ($entity) use ($id) {
+        $entities = array_filter($this->data, function ($entity) use ($id) {
             return $entity->getId() === $id;
         });
 
@@ -32,7 +32,7 @@ abstract class AbstractRepository implements Gateway
      */
     public function findOneBy(array $criteria, array $orderBy = null)
     {
-        $entities = array_filter($this->inMemory, function ($entity) use ($criteria) {
+        $entities = array_filter($this->data, function ($entity) use ($criteria) {
             return $entity->getId() === $criteria['id'];
         });
 
@@ -44,7 +44,7 @@ abstract class AbstractRepository implements Gateway
      */
     public function findAll()
     {
-        return $this->inMemory;
+        return $this->data;
     }
 
     /**
@@ -52,7 +52,7 @@ abstract class AbstractRepository implements Gateway
      */
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
     {
-        return $this->inMemory;
+        return $this->data;
     }
 
     /**
@@ -60,7 +60,7 @@ abstract class AbstractRepository implements Gateway
      */
     public function create($entity)
     {
-        $entity->setId(\count($this->inMemory) + 1);
-        $this->inMemory[] = $entity;
+        $entity->setId(\count($this->data) + 1);
+        $this->data[] = $entity;
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\UseCase\Post;
 
-use App\Adapter\Response\PostModelAdapter;
 use App\Boundary\Input\Post\PostRequest;
 use App\Boundary\Input\RequestInterface;
 use App\Boundary\Output\Post\PostResponse;
 use App\Boundary\Output\ResponseInterface;
+use App\DataTransformer\PostDataTransformer;
 use App\Entity\Category;
 use App\Entity\Post;
 use App\Entity\Tag;
@@ -24,7 +24,7 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
         private PostGateway $postGateway,
         private CategoryGateway $categoryGateway,
         private TagGateway $tagGateway,
-        private PostModelAdapter $postModelAdapter
+        private PostDataTransformer $dataTransformer
     ) {
         parent::__construct($validator);
     }
@@ -42,7 +42,7 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
         try {
             $post = $this->buildEntity($request);
             $this->postGateway->create($post);
-            $response->setData($this->postModelAdapter->adapte($post));
+            $response->setData($this->dataTransformer->reverseTransform($post));
         } catch (CategoryNotFoundException|TagNotFoundException $exception) {
             $response
                 ->setStatus($response::NOT_FOUND)
@@ -56,12 +56,7 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
      */
     private function buildEntity(PostRequest $request): Post
     {
-        $post = (new Post(
-            $request->getTitle(),
-            $request->getBody(),
-            $request->getShortDescription()
-        ))->setPublishedAt($request->getPublishedAt())
-            ->setViewCount($request->getViewCount());
+        $post = $this->dataTransformer->transform($request);
 
         if ($request->getCategory()) {
             $category = $this->findCategory($request);
@@ -96,7 +91,7 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
      */
     private function findTags(PostRequest $request): array
     {
-        $tags = $this->tagGateway->findById($request->getIdsTag());
+        $tags = $this->tagGateway->findById($request->getTags());
 
         if (\count($tags) !== \count($request->getTags())) {
             throw new TagNotFoundException('One or many tag not found');
