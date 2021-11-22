@@ -2,20 +2,30 @@
 
 namespace App\Boundary\Output\Post;
 
-use App\Boundary\Output\AbstractObjectResponse;
-use App\Dto\DtoInterface;
+use App\Boundary\Output\AbstractResponse;
 use App\Dto\PostDto;
 use App\Entity\Post;
 
-/**
- * @template-extends AbstractObjectResponse<Post>
- */
-class PostResponse extends AbstractObjectResponse
+class PostResponse extends AbstractResponse
 {
+    private ?Post $data = null;
+
     /**
-     * @return PostDto
+     * @return ?Post
      */
-    protected function getDto(): DtoInterface
+    public function getData(): ?Post
+    {
+        return $this->data;
+    }
+
+    public function setData(?Post $data): self
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    protected function toDto(): PostDto
     {
         $data = $this->getData();
 
