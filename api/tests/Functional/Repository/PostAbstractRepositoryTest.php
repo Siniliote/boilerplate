@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Repository;
 
+use App\DataFixtures\Story\PostStory;
 use App\Repository\PostRepository;
-use App\Story\PostStory;
 use App\Tests\Shared\Functional\AbstractRepositoryWebTestCase;
 
 class PostAbstractRepositoryTest extends AbstractRepositoryWebTestCase

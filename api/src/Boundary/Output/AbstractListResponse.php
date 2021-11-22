@@ -56,8 +56,7 @@ abstract class AbstractListResponse extends AbstractResponse
         $result = parent::getResult();
         if (!$this->hasError()) {
             foreach ($this->getData() as $entity) {
-                $result['data'][] =
-                    $this->getDto($entity);
+                $result['data'][] = $this->getDto($entity);
             }
         } else {
             $result['data'] = [];
