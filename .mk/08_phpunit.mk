@@ -6,7 +6,7 @@ phpunit: xdebug.off ## PHPUnit: Launch all tests (unit, functional, ...).
 
 .PHONY: phpunit.coverage
 phpunit.coverage: xdebug.on _build ## PHPUnit: Generate code clover in HTML format | Clover style coverage report | Junit and xml-coverage for Infection.
-	$(PHPUNIT) --coverage-html=$(PHPUNIT_COVERAGE) --coverage-xml=$(PROJECT_BUILD)/phpunit/coverage-xml --log-junit=$(PROJECT_BUILD)/phpunit/coverage-xml/junit.xml --coverage-clover=$(PROJECT_BUILD)/logs/clover.xml
+	$(PHPUNIT) --coverage-html=$(PHPUNIT_COVERAGE) --coverage-xml=$(PROJECT_BUILD)/phpunit/coverage-xml --log-junit=$(PROJECT_BUILD)/logs/junit.xml --coverage-clover=$(PROJECT_BUILD)/logs/clover.xml
 
 .PHONY: phpunit.coverage.open
 phpunit.coverage.open: ## PHPUnit: Open code coverage report.
