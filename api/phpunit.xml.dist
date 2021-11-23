@@ -26,8 +26,6 @@
         </include>
         <exclude>
             <directory>src/DataFixtures</directory>
-            <directory>src/Factory</directory>
-            <directory>src/Story</directory>
             <directory>src/Kernel.php</directory>
         </exclude>
     </coverage>

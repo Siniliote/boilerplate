@@ -15,8 +15,6 @@
             <directory name="features"/>
             <directory name="migrations"/>
             <directory name="src/DataFixtures"/>
-            <directory name="src/Factory"/>
-            <directory name="src/Story"/>
             <directory name="vendor"/>
             <file name="src/Kernel.php" />
         </ignoreFiles>

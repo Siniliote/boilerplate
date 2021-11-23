@@ -22,7 +22,7 @@ class FindAllUserController extends AbstractController
      * @OA\Tag(name="User")
      * @OA\Response(response="200", description="Find all users", @Model(type=UserListResponse::class))
      */
-    #[Route('/api/user/', name: 'get_users', methods: ['GET'], format: FormatInterface::JSON)]
+    #[Route('/api/users', name: 'get_users', methods: ['GET'], format: FormatInterface::JSON)]
     public function __invoke(): Response
     {
         $request = new EmptyRequest();

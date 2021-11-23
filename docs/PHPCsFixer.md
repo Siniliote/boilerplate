@@ -1,4 +1,4 @@
-# PHPStan
+# PHPCsFixer
 
 ---
 
