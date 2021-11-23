@@ -42,7 +42,7 @@ abstract class AbstractResponse implements ResponseInterface, StatusCodeInterfac
         return $this;
     }
 
-    public function hasError(): bool
+    public function hasErrors(): bool
     {
         return \count($this->errors) > 0;
     }
@@ -50,11 +50,12 @@ abstract class AbstractResponse implements ResponseInterface, StatusCodeInterfac
     /**
      * @return array<string, mixed>
      */
-    public function getResult(): array
+    public function generate(): array
     {
         return [
             'status' => $this->getStatus(),
             'errors' => $this->getErrors(),
+            'data' => !$this->hasErrors() ? $this->toDto() : [],
         ];
     }
 }

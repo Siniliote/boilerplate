@@ -7,7 +7,6 @@ use App\Boundary\Input\RequestInterface;
 use App\Boundary\Output\Category\CategoryResponse;
 use App\Boundary\Output\Post\PostResponse;
 use App\Boundary\Output\ResponseInterface;
-use App\Entity\Category;
 use App\Entity\Post;
 use App\Gateway\PostGateway;
 use App\UseCase\AbstractPostUseCase;
@@ -35,10 +34,22 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
             return;
         }
 
-        $post = $this->transform($request);
-        $this->getCategory($request, $response, $post);
+        $post = $this->transform($request, $response);
         $this->gateway->create($post);
         $response->setData($post);
+    }
+
+    public function transform(PostRequest $request, PostResponse $response): Post
+    {
+        $post = (new Post(
+            $request->getTitle(),
+            $request->getBody(),
+            $request->getShortDescription()
+        ))->setPublishedAt($request->getPublishedAt())
+            ->setViewCount($request->getViewCount());
+        $this->getCategory($request, $response, $post);
+
+        return $post;
     }
 
     private function getCategory(PostRequest $request, PostResponse $response, Post $post): void
@@ -46,7 +57,7 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
         if ($request->getCategory()) {
             $responseCategory = new CategoryResponse();
             $this->categoryUseCase->execute($request->getCategory(), $responseCategory);
-            if ($responseCategory->hasError()) {
+            if ($responseCategory->hasErrors()) {
                 $response
                     ->setStatus($response::BAD_REQUEST)
                     ->setErrors($responseCategory->getErrors());
@@ -56,20 +67,5 @@ class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
 
             $post->setCategory($responseCategory->getData());
         }
-    }
-
-    public function transform(PostRequest $request): Post
-    {
-        $post = (new Post(
-            $request->getTitle(),
-            $request->getBody(),
-            $request->getShortDescription()
-        ))->setPublishedAt($request->getPublishedAt())
-            ->setViewCount($request->getViewCount());
-        if ($category = $request->getCategory()) {
-            $post->setCategory(new Category())->setId($category->getId());
-        }
-
-        return $post;
     }
 }

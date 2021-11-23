@@ -2,20 +2,27 @@
 
 namespace App\Boundary\Output\User;
 
-use App\Boundary\Output\AbstractObjectResponse;
-use App\Dto\DtoInterface;
+use App\Boundary\Output\AbstractResponse;
 use App\Dto\UserDto;
 use App\Entity\User;
 
-/**
- * @template-extends AbstractObjectResponse<User>
- */
-class UserResponse extends AbstractObjectResponse
+class UserResponse extends AbstractResponse
 {
-    /**
-     * @return UserDto
-     */
-    protected function getDto(): DtoInterface
+    private ?User $data = null;
+
+    public function getData(): ?User
+    {
+        return $this->data;
+    }
+
+    public function setData(?User $data): self
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    public function toDto(): UserDto
     {
         return (new UserDto())
             ->setId($this->getData()?->getId())
