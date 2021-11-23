@@ -4,11 +4,11 @@ SUPPORTED_COMMANDS += php.analyze qa.codesniffer.fix.files qa.psalm.enable-plugi
 
 .PHONY: php.analyze
 php.analyze: ## Project: Lint php multiples php files.
-	@$(EXEC_APP) sh -c 'echo "$(COMMAND_ARGS)"| xargs -n1 -P$(NPROCS) php -l -d display_errors=0'
+	$(EXEC_APP) sh -c 'echo "$(COMMAND_ARGS)"| xargs -n1 -P$(NPROCS) php -l -d display_errors=0'
 
 .PHONY: qa.phpmetrics
 qa.phpmetrics: _build ## PHPMetrics: Provide tons of metric (complexity / volume / object oriented / maintainability). | http://www.phpmetrics.org
-	$(PHPMETRICS) --config=phpmetrics.json --junit=$(PROJECT_BUILD)/phpunit/coverage-xml/junit.xml
+	$(PHPMETRICS) --config=phpmetrics.json --junit=$(PROJECT_BUILD)/logs/junit.xml
 
 .PHONY: qa.phpmetrics.open
 qa.phpmetrics.open: _build ## PHPMetrics: Open report | http://www.phpmetrics.org

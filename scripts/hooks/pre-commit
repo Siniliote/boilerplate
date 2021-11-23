@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\.php | sed 's|^api/*||'`
+STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep "\.php" | sed 's|^api/*||'`
 
 echo "Checking PHP Lint..."
 make NO_TTY=1 php.analyze $STAGED_FILES_CMD
