@@ -2,7 +2,7 @@
 
 server {
     listen ${NGINX_PORT};
-    root /srv/app/public;
+    root /srv/app/api/public;
 
     location / {
         # try to serve file directly, fallback to index.php
