@@ -47,7 +47,7 @@ qa.psalm.disable-plugin: ## vimeo/psalm: Désactive un plugin | https://psalm.de
 	$(PSALM)-plugin disable $(COMMAND_ARGS)
 
 .PHONY: qa.psalter
-qa.psalter: ## vimeo/psalm: Ajoute un plugin | https://psalm.dev/plugins
+qa.psalter: ## vimeo/psalm: Corrige les erreurs détecter par psalm
 	$(PSALTER) --issues=all --php-version=8.0
 
 .PHONY: qa.phpstan.generate.baseline

@@ -16,7 +16,7 @@ sh: ## Project: app sh access.
 ##
 
 .PHONY: install
-install: env.app hook.install docker.start dependencies data ready ## Project: Install all (dependencies, data, assets, ...) according to the current environment (APP_ENV).
+install: env.app hook.install docker.start dependencies data symfony.cc ready ## Project: Install all (dependencies, data, assets, ...) according to the current environment (APP_ENV).
 
 .PHONY: install.dev
 install.dev: env.local.dev ## Project: Force the installation for the "dev" environment.

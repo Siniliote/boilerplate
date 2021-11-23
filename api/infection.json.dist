@@ -5,9 +5,7 @@
         ],
         "excludes": [
             "migrations",
-            "src/DataFixtures",
-            "src/Factory",
-            "src/Story"
+            "src/DataFixtures"
         ]
     },
     "timeout": 10,
