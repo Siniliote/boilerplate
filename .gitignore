@@ -6,7 +6,3 @@
 ###> Config Local ###
 docker-compose.override.yml
 ###< Config Local ###
-
-###> Sonarqube ###
-.scannerwork
-###> Sonarqube ###
