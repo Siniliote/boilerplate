@@ -2,70 +2,53 @@
 
 namespace App\UseCase\Post;
 
-use App\Boundary\Input\Post\PostRequest;
+use App\Boundary\Input\PostRequest;
 use App\Boundary\Input\RequestInterface;
-use App\Boundary\Output\Category\CategoryResponse;
-use App\Boundary\Output\Post\PostResponse;
-use App\Boundary\Output\ResponseInterface;
+use App\Boundary\Output\PostResponse;
 use App\Entity\Post;
+use App\Exception\InvalidRequestException;
 use App\Gateway\PostGateway;
-use App\UseCase\AbstractPostUseCase;
+use App\Presenter\PostPresenter;
+use App\Presenter\PresenterInterface;
+use App\UseCase\AbstractUseCase;
 use App\UseCase\Category\FindCategoryUseCase;
 use App\UseCase\UseCaseInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class PostPostUseCase extends AbstractPostUseCase implements UseCaseInterface
+class PostPostUseCase extends AbstractUseCase implements UseCaseInterface
 {
     public function __construct(
-        ValidatorInterface $validator,
-        private PostGateway $gateway,
-        private FindCategoryUseCase $categoryUseCase
+        protected ValidatorInterface $validator,
+        private PostGateway $postGateway,
+        private FindCategoryUseCase $findCategoryUseCase,
     ) {
         parent::__construct($validator);
     }
 
     /**
-     * @param PostRequest  $request
-     * @param PostResponse $response
+     * @param PostRequest   $request
+     * @param PostPresenter $presenter
+     *
+     * @throws InvalidRequestException
+     * @throws \Exception
      */
-    public function execute(RequestInterface $request, ResponseInterface $response): void
+    public function execute(RequestInterface $request, PresenterInterface $presenter): void
     {
-        if (!$this->isValid($request, $response)) {
-            return;
-        }
+        $this->isValid($request);
 
-        $post = $this->transform($request, $response);
-        $this->gateway->create($post);
-        $response->setData($post);
-    }
-
-    public function transform(PostRequest $request, PostResponse $response): Post
-    {
-        $post = (new Post(
+        $post = new Post(
             $request->getTitle(),
             $request->getBody(),
-            $request->getShortDescription()
-        ))->setPublishedAt($request->getPublishedAt())
-            ->setViewCount($request->getViewCount());
-        $this->getCategory($request, $response, $post);
+            $request->getShortDescription() ?? null
+        );
 
-        return $post;
-    }
-
-    private function getCategory(PostRequest $request, PostResponse $response, Post $post): void
-    {
-        if ($request->getCategory()) {
-            $responseCategory = new CategoryResponse();
-            $this->categoryUseCase->execute($request->getCategory(), $responseCategory);
-            if ($responseCategory->hasErrors()) {
-                $response
-                    ->setStatus($response::BAD_REQUEST)
-                    ->setErrors($responseCategory->getErrors());
-
-                return;
-            }
-
-            $post->setCategory($responseCategory->getData());
+        if (null !== $request->getCategory()) {
+            $this->findCategoryUseCase->execute($request->getCategory(), $presenter);
+            $post->setCategory($presenter->getCategory());
         }
+
+        $this->postGateway->create($post);
+
+        $presenter->present(new PostResponse($post));
     }
 }

@@ -2,19 +2,18 @@
 
 namespace App\UseCase\Comment;
 
-use App\Boundary\Input\CommentRequest;
+use App\Boundary\Input\EmptyRequest;
 use App\Boundary\Input\RequestInterface;
+use App\Boundary\Output\CollectionResponse;
 use App\Boundary\Output\CommentResponse;
-use App\Entity\Comment;
 use App\Exception\InvalidRequestException;
 use App\Gateway\CommentGateway;
-use App\Presenter\CommentPresenter;
 use App\Presenter\PresenterInterface;
 use App\UseCase\AbstractUseCase;
 use App\UseCase\UseCaseInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class PostCommentUseCase extends AbstractUseCase implements UseCaseInterface
+class FindAllCommentUseCase extends AbstractUseCase implements UseCaseInterface
 {
     public function __construct(
         protected ValidatorInterface $validator,
@@ -24,8 +23,7 @@ class PostCommentUseCase extends AbstractUseCase implements UseCaseInterface
     }
 
     /**
-     * @param CommentRequest   $request
-     * @param CommentPresenter $presenter
+     * @param EmptyRequest $request
      *
      * @throws InvalidRequestException
      */
@@ -33,11 +31,8 @@ class PostCommentUseCase extends AbstractUseCase implements UseCaseInterface
     {
         $this->isValid($request);
 
-        $comment = new Comment($presenter->getUser(), $request->getBody());
+        $comment = $this->commentGateway->findAll();
 
-        $presenter->getPost()->addComment($comment);
-        $this->commentGateway->create($comment);
-
-        $presenter->present(new CommentResponse($comment));
+        $presenter->present(new CollectionResponse(CommentResponse::class, $comment));
     }
 }

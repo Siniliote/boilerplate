@@ -8,9 +8,8 @@ parameters:
         objectManagerLoader: tests/object-manager.php
     scanDirectories:
         - var/cache/dev/Symfony/Config
-    level: max
+    level: 5
     paths:
         - src
-        - tests
     bootstrapFiles:
         - vendor/bin/.phpunit/phpunit/vendor/autoload.php

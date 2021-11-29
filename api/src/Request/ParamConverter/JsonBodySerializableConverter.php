@@ -9,19 +9,23 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 final class JsonBodySerializableConverter implements ParamConverterInterface
 {
-    public function __construct(private SerializerInterface $serializer)
-    {
+    public function __construct(
+        private SerializerInterface $serializer,
+    ) {
     }
 
-    /**
-     * @return void
-     */
-    public function apply(Request $request, ParamConverter $configuration)
+    public function apply(Request $request, ParamConverter $configuration): bool
     {
         $body = $request->getContent();
 
+        if (empty($body)) {
+            return false;
+        }
+
         $object = $this->serializer->deserialize($body, $configuration->getClass(), 'json');
         $request->attributes->set($configuration->getName(), $object);
+
+        return true;
     }
 
     public function supports(ParamConverter $configuration): bool

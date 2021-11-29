@@ -2,12 +2,9 @@
 
 namespace App\UseCase\User;
 
-use App\Boundary\Input\EmptyRequest;
 use App\Boundary\Input\RequestInterface;
-use App\Boundary\Output\ResponseInterface;
-use App\Boundary\Output\User\UserListResponse;
-use App\Entity\User;
 use App\Gateway\UserGateway;
+use App\Presenter\PresenterInterface;
 use App\UseCase\UseCaseInterface;
 
 class FindAllUserUseCase implements UseCaseInterface
@@ -16,16 +13,8 @@ class FindAllUserUseCase implements UseCaseInterface
     {
     }
 
-    /**
-     * @param EmptyRequest     $request
-     * @param UserListResponse $response
-     */
-    public function execute(RequestInterface $request, ResponseInterface $response): void
+    public function execute(RequestInterface $request, PresenterInterface $presenter): void
     {
         $users = $this->gateway->findAll();
-        /** @var User $user */
-        foreach ($users as $user) {
-            $response->addData($user);
-        }
     }
 }

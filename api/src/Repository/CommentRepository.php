@@ -11,6 +11,8 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
  * @method Comment[]    findAll()
  * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method void         create(Comment $entity)
+ * @method void         delete(Comment $entity)
  *
  * @psalm-method list<Comment> findAll()
  * @psalm-method list<Comment> findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)

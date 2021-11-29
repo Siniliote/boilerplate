@@ -62,4 +62,9 @@ class UserRepository implements UserGateway
         $entity->setId(\count($this->users) + 1);
         $this->users[] = $entity;
     }
+
+    public function delete($entity)
+    {
+        // TODO: Implement delete() method.
+    }
 }

@@ -4,32 +4,21 @@ namespace App\Controller\User;
 
 use App\Boundary\Input\EmptyRequest;
 use App\Boundary\Output\FormatInterface;
-use App\Boundary\Output\User\UserListResponse;
+use App\Presenter\CollectionPresenter;
+use App\Presenter\UserPresenter;
 use App\UseCase\User\FindAllUserUseCase;
-use Nelmio\ApiDocBundle\Annotation\Model;
-use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FindAllUserController extends AbstractController
 {
-    public function __construct(protected FindAllUserUseCase $useCase)
+    #[Route('/api/comment', name: 'get_all_user', methods: [Request::METHOD_GET], format: FormatInterface::JSON)]
+    public function __invoke(FindAllUserUseCase $findAllComment): Response
     {
-    }
+        $findAllComment->execute(new EmptyRequest(), $presenter = new CollectionPresenter(UserPresenter::class));
 
-    /**
-     * @OA\Tag(name="User")
-     * @OA\Response(response="200", description="Find all users", @Model(type=UserListResponse::class))
-     */
-    #[Route('/api/users', name: 'get_users', methods: ['GET'], format: FormatInterface::JSON)]
-    public function __invoke(): Response
-    {
-        $request = new EmptyRequest();
-        $response = new UserListResponse();
-
-        $this->useCase->execute($request, $response);
-
-        return $this->json($response->generate());
+        return $this->json($presenter->getViewModel(), Response::HTTP_OK);
     }
 }

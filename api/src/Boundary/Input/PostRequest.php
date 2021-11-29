@@ -1,21 +1,26 @@
 <?php
 
-namespace App\Boundary\Input\Post;
+namespace App\Boundary\Input;
 
-use App\Boundary\Input\Category\CategoryRequest;
-use App\Boundary\Input\RequestInterface;
+use App\Request\ParamConverter\JsonBodySerializableInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
-class PostRequest implements RequestInterface
+class PostRequest implements RequestInterface, JsonBodySerializableInterface
 {
-    private string $title;
-    private string $body;
+    #[Assert\Length(min: 15, max: 30)]
     private ?string $shortDescription = null;
     private int $viewCount = 0;
     private ?\DateTime $publishedAt = null;
-    private ?CategoryRequest $category = null;
+    private ?IdRequest $category = null;
 
     /** @var int[] */
     private array $tags = [];
+
+    public function __construct(
+        #[Assert\NotBlank] #[Assert\Length(min: 2, max: 50)] private string $title,
+        #[Assert\NotBlank] #[Assert\Length(min: 15)] private string $body,
+    ) {
+    }
 
     public function getTitle(): string
     {
@@ -77,12 +82,12 @@ class PostRequest implements RequestInterface
         return $this;
     }
 
-    public function getCategory(): ?CategoryRequest
+    public function getCategory(): ?IdRequest
     {
         return $this->category;
     }
 
-    public function setCategory(?CategoryRequest $category): self
+    public function setCategory(?IdRequest $category): self
     {
         $this->category = $category;
 

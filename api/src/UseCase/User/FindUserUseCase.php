@@ -4,32 +4,40 @@ namespace App\UseCase\User;
 
 use App\Boundary\Input\IdRequest;
 use App\Boundary\Input\RequestInterface;
-use App\Boundary\Output\ResponseInterface;
-use App\Boundary\Output\User\UserResponse;
+use App\Boundary\Output\UserResponse;
+use App\Exception\InvalidRequestException;
+use App\Exception\NotFoundResourceException;
 use App\Gateway\UserGateway;
+use App\Presenter\PresenterInterface;
+use App\UseCase\AbstractUseCase;
 use App\UseCase\UseCaseInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class FindUserUseCase implements UseCaseInterface
+class FindUserUseCase extends AbstractUseCase implements UseCaseInterface
 {
-    public function __construct(protected UserGateway $gateway)
-    {
+    public function __construct(
+        protected ValidatorInterface $validator,
+        private UserGateway $gateway,
+    ) {
+        parent::__construct($validator);
     }
 
     /**
-     * @param IdRequest    $request
-     * @param UserResponse $response
+     * @param IdRequest $request
+     *
+     * @throws InvalidRequestException
+     * @throws NotFoundResourceException
      */
-    public function execute(RequestInterface $request, ResponseInterface $response): void
+    public function execute(RequestInterface $request, PresenterInterface $presenter): void
     {
-        $user = $this->gateway->find($request->getId());
-        if (!$user) {
-            $response
-                ->setStatus($response::NOT_FOUND)
-                ->addError('User '.$request->getId().' not found');
+        $this->isValid($request);
 
-            return;
+        $user = $this->gateway->find($request->getId());
+
+        if (!$user) {
+            throw new NotFoundResourceException('User not found');
         }
 
-        $response->setData($user);
+        $presenter->present(new UserResponse($user));
     }
 }

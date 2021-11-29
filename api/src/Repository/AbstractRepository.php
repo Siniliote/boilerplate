@@ -11,7 +11,7 @@ use Doctrine\ORM\ORMException;
 
 /**
  * @template T
- * @template-extends ServiceEntityRepository<T>
+ * @extends ServiceEntityRepository<T>
  */
 abstract class AbstractRepository extends ServiceEntityRepository
 {
@@ -43,6 +43,19 @@ abstract class AbstractRepository extends ServiceEntityRepository
     public function create($entity): void
     {
         $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @param object $entity
+     * @psalm-param object<T> $entity
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function delete($entity): void
+    {
+        $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }
 }

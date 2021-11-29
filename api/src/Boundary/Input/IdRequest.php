@@ -2,13 +2,13 @@
 
 namespace App\Boundary\Input;
 
-class IdRequest implements RequestInterface
-{
-    private int $id;
+use App\Request\ParamConverter\JsonBodySerializableInterface;
 
-    public function __construct(int $id)
-    {
-        $this->id = $id;
+class IdRequest implements RequestInterface, JsonBodySerializableInterface
+{
+    public function __construct(
+        private int $id,
+    ) {
     }
 
     public function getId(): int
