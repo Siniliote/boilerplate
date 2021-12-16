@@ -6,13 +6,11 @@ use function array_filter;
 use const ARRAY_FILTER_USE_BOTH;
 use function array_keys;
 use function array_map;
-use function array_reverse;
 use function array_search;
 use function array_values;
 use ArrayIterator;
 use Closure;
 use function current;
-use Doctrine\Common\Collections\Expr\ClosureExpressionVisitor;
 use function end;
 use function key;
 use function next;
@@ -20,7 +18,6 @@ use function reset;
 use ReturnTypeWillChange;
 use function spl_object_hash;
 use Traversable;
-use function uasort;
 
 /**
  * An ArrayCollection is a Collection implementation that wraps a regular PHP array.
@@ -33,19 +30,16 @@ use function uasort;
  * @psalm-template TKey of array-key
  * @psalm-template T
  * @template-implements Collection<TKey,T>
- * @template-implements Selectable<TKey,T>
  * @psalm-consistent-constructor
  */
-class ArrayCollection implements Collection, Selectable
+class ArrayCollection implements Collection
 {
     /**
      * An array containing the entries of this collection.
      *
      * @psalm-var array<TKey,T>
-     *
-     * @var mixed[]
      */
-    private $elements;
+    private array $elements;
 
     /**
      * Initializes a new ArrayCollection.
@@ -60,7 +54,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->elements;
     }
@@ -82,7 +76,6 @@ class ArrayCollection implements Collection, Selectable
      * @param array $elements elements
      * @psalm-param array<K,V> $elements
      *
-     * @return static
      * @psalm-return static<K,V>
      *
      * @psalm-template K of array-key
@@ -143,7 +136,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function removeElement($element)
+    public function removeElement($element): bool
     {
         $key = array_search($element, $this->elements, true);
 
@@ -217,7 +210,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function containsKey($key)
+    public function containsKey($key): bool
     {
         return isset($this->elements[$key]) || \array_key_exists($key, $this->elements);
     }
@@ -225,7 +218,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function contains($element)
+    public function contains($element): bool
     {
         return \in_array($element, $this->elements, true);
     }
@@ -233,7 +226,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function exists(Closure $p)
+    public function exists(Closure $p): bool
     {
         foreach ($this->elements as $key => $element) {
             if ($p($key, $element)) {
@@ -263,7 +256,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function getKeys()
+    public function getKeys(): array
     {
         return array_keys($this->elements);
     }
@@ -271,7 +264,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function getValues()
+    public function getValues(): array
     {
         return array_values($this->elements);
     }
@@ -303,7 +296,7 @@ class ArrayCollection implements Collection, Selectable
      * This breaks assumptions about the template type, but it would
      * be a backwards-incompatible change to remove this method
      */
-    public function add($element)
+    public function add($element): bool
     {
         $this->elements[] = $element;
 
@@ -313,7 +306,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return empty($this->elements);
     }
@@ -335,7 +328,6 @@ class ArrayCollection implements Collection, Selectable
      *
      * @psalm-param Closure(T=):U $func
      *
-     * @return static
      * @psalm-return static<TKey, U>
      *
      * @psalm-template U
@@ -348,7 +340,6 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      *
-     * @return static
      * @psalm-return static<TKey,T>
      */
     public function filter(Closure $p)
@@ -359,7 +350,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function forAll(Closure $p)
+    public function forAll(Closure $p): bool
     {
         foreach ($this->elements as $key => $element) {
             if (!$p($key, $element)) {
@@ -373,7 +364,7 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function partition(Closure $p)
+    public function partition(Closure $p): Collection|array
     {
         $matches = $noMatches = [];
 
@@ -409,43 +400,8 @@ class ArrayCollection implements Collection, Selectable
     /**
      * {@inheritDoc}
      */
-    public function slice($offset, $length = null)
+    public function slice($offset, $length = null): array
     {
         return \array_slice($this->elements, $offset, $length, true);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function matching(Criteria $criteria)
-    {
-        $expr = $criteria->getWhereExpression();
-        $filtered = $this->elements;
-
-        if ($expr) {
-            $visitor = new ClosureExpressionVisitor();
-            $filter = $visitor->dispatch($expr);
-            $filtered = array_filter($filtered, $filter);
-        }
-
-        $orderings = $criteria->getOrderings();
-
-        if ($orderings) {
-            $next = null;
-            foreach (array_reverse($orderings) as $field => $ordering) {
-                $next = ClosureExpressionVisitor::sortByField($field, Criteria::DESC === $ordering ? -1 : 1, $next);
-            }
-
-            uasort($filtered, $next);
-        }
-
-        $offset = $criteria->getFirstResult();
-        $length = $criteria->getMaxResults();
-
-        if ($offset || $length) {
-            $filtered = \array_slice($filtered, (int) $offset, $length);
-        }
-
-        return $this->createFrom($filtered);
     }
 }

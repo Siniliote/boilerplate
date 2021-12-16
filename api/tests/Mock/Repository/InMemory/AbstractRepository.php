@@ -42,7 +42,7 @@ abstract class AbstractRepository implements Gateway
     /**
      * {@inheritDoc}
      */
-    public function findAll()
+    public function findAll(): array
     {
         return $this->data;
     }
@@ -50,7 +50,7 @@ abstract class AbstractRepository implements Gateway
     /**
      * {@inheritDoc}
      */
-    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null): array
     {
         return $this->data;
     }
@@ -62,5 +62,13 @@ abstract class AbstractRepository implements Gateway
     {
         $entity->setId(\count($this->data) + 1);
         $this->data[] = $entity;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function delete($entity)
+    {
+        // TODO: Implement delete() method.
     }
 }

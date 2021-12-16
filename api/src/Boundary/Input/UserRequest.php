@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Boundary\Input\User;
+namespace App\Boundary\Input;
 
-use App\Boundary\Input\RequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UserRequest implements RequestInterface
 {
-    #[Assert\NotBlank]
-    #[Assert\Length(
-        min: 2,
-        max: 50,
-    )]
-    private string $name = '';
+    public function __construct(
+        #[Assert\NotBlank] #[Assert\Length(min: 2, max: 50)] private string $name,
+    ) {
+    }
 
     public function getName(): string
     {

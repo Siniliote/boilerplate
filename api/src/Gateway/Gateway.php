@@ -61,4 +61,14 @@ interface Gateway
      * @return void
      */
     public function create($entity);
+
+    /**
+     * Delete entity with persist database.
+     *
+     * @param object $entity
+     * @psalm-param T $entity
+     *
+     * @return void
+     */
+    public function delete($entity);
 }

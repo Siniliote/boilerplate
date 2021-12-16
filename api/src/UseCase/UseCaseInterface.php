@@ -3,9 +3,9 @@
 namespace App\UseCase;
 
 use App\Boundary\Input\RequestInterface;
-use App\Boundary\Output\ResponseInterface;
+use App\Presenter\PresenterInterface;
 
 interface UseCaseInterface
 {
-    public function execute(RequestInterface $request, ResponseInterface $response): void;
+    public function execute(RequestInterface $request, PresenterInterface $presenter): void;
 }

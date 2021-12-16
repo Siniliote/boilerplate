@@ -1,7 +1,27 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method App\\\\Repository\\\\AbstractRepository\\:\\:create\\(\\) has parameter \\$entity with no type specified\\.$#"
+			message: '~Array \(array\<TKey of \(int\|string\), T\>\) does not accept key int\.~'
+			count: 1
+			path: src/Common/Collections/ArrayCollection.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of method App\\\\Common\\\\Collections\\\\ArrayCollection\\<TKey of \\(int\\|string\\),T\\>\\:\\:set\\(\\) expects TKey of \\(int\\|string\\), int\\|string given\\.$#"
+			count: 1
+			path: src/Common/Collections/ArrayCollection.php
+
+		-
+			message: '~Unsafe usage of new static\(\)\.~'
+			count: 1
+			path: src/Common/Collections/ArrayCollection.php
+
+		-
+			message: "#^PHPDoc type Doctrine\\\\ORM\\\\EntityManagerInterface of property App\\\\Repository\\\\AbstractRepository\\:\\:\\$_em is not covariant with PHPDoc type Doctrine\\\\ORM\\\\EntityManager of overridden property Doctrine\\\\ORM\\\\EntityRepository\\<T\\>\\:\\:\\$_em\\.$#"
+			count: 1
+			path: src/Repository/AbstractRepository.php
+
+		-
+			message: "#^PHPDoc type string of property App\\\\Repository\\\\AbstractRepository\\:\\:\\$_entityName is not covariant with PHPDoc type class\\-string\\<T\\> of overridden property Doctrine\\\\ORM\\\\EntityRepository\\<T\\>\\:\\:\\$_entityName\\.$#"
 			count: 1
 			path: src/Repository/AbstractRepository.php
 
@@ -9,24 +29,4 @@ parameters:
 			message: "#^Type mixed in generic type Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\<mixed\\> in PHPDoc tag @extends is not subtype of template type TEntityClass of object of class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\.$#"
 			count: 1
 			path: src/Repository/AbstractRepository.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:close\\(\\)\\.$#"
-			count: 1
-			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
-
-		-
-			message: "#^Method App\\\\Tests\\\\Shared\\\\Functional\\\\AbstractRepositoryWebTestCase\\:\\:getRepository\\(\\) return type with generic interface Doctrine\\\\Persistence\\\\ObjectRepository does not specify its types\\: TEntityClass$#"
-			count: 1
-			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
-
-		-
-			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\AbstractRepositoryWebTestCase\\:\\:\\$repository \\(Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\) does not accept object\\.$#"
-			count: 1
-			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
-
-		-
-			message: "#^Property App\\\\Tests\\\\Shared\\\\Functional\\\\AbstractRepositoryWebTestCase\\:\\:\\$repository with generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository does not specify its types\\: TEntityClass$#"
-			count: 1
-			path: tests/Shared/Functional/AbstractRepositoryWebTestCase.php
 
